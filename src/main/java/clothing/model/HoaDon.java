@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class HoaDon {
+public final class HoaDon {
     private final int maHoaDon;
     private final LocalDateTime ngayLap;
     private final int maKhachHang;

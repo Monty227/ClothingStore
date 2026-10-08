@@ -2,7 +2,7 @@ package clothing.model;
 
 import java.math.BigDecimal;
 
-public class ChiTietHoaDon {
+public final class ChiTietHoaDon {
     private final int maHoaDon;
     private final int maBienThe;
     private final int soLuong;

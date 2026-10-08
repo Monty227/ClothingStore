@@ -3,7 +3,7 @@ package clothing.model;
 import java.time.LocalDate;
 import java.util.List;
 
-public class KhachHang {
+public final class KhachHang {
     private final int maKhachHang;
     private final String hoTen;
     private final String soDienThoai;

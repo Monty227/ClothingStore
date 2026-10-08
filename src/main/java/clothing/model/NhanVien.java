@@ -1,5 +1,6 @@
 package clothing.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -8,9 +9,8 @@ public final class NhanVien {
     private final String hoTen;
     private final String soDienThoai;
     private final String chucVu;
-    private final double luongCoBan;
+    private final BigDecimal luongCoBan;
     private final LocalDate ngayVaoLam;
-
     private final List<HoaDon> danhSachHoaDon;
     private final List<PhieuNhap> danhSachPhieuNhap;
 
@@ -19,7 +19,7 @@ public final class NhanVien {
             String hoTen,
             String soDienThoai,
             String chucVu,
-            double luongCoBan,
+            BigDecimal luongCoBan,
             LocalDate ngayVaoLam,
             List<HoaDon> danhSachHoaDon,
             List<PhieuNhap> danhSachPhieuNhap ) {
@@ -44,7 +44,7 @@ public final class NhanVien {
     public String getChucVu() {
         return chucVu;
     }
-    public double getLuongCoBan() {
+    public BigDecimal getLuongCoBan() {
         return luongCoBan;
     }
     public LocalDate getNgayVaoLam() {

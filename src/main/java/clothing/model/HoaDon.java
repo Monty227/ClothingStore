@@ -40,4 +40,32 @@ public final class HoaDon {
         this.khuyenMai = khuyenMai;
         this.chiTietHoaDons = chiTietHoaDons;
     }
+
+    public int getMaHoaDon() { return maHoaDon; }
+
+    public LocalDateTime getNgayLap() { return ngayLap; }
+
+    public int getMaKhachHang() { return maKhachHang; }
+
+    public int getMaNhanVien() { return maNhanVien; }
+
+    public int getMaKhuyenMai() { return maKhuyenMai; }
+
+    public BigDecimal getTongTien() { return tongTien; }
+
+    public BigDecimal getTienGiam() { return tienGiam; }
+
+    public BigDecimal getThanhTien() { return thanhTien; }
+
+    public String getPhuongThucThanhToan() { return phuongThucThanhToan; }
+
+    public String getTrangThai() { return trangThai; }
+
+    public KhachHang getKhachHang() { return khachHang; }
+
+    public NhanVien getNhanVien() { return nhanVien; }
+
+    public KhuyenMai getKhuyenMai() { return khuyenMai; }
+
+    public List<ChiTietHoaDon> getChiTietHoaDons() { return chiTietHoaDons; }
 }

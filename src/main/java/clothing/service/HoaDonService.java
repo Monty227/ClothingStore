@@ -3,8 +3,10 @@ package clothing.service;
 import clothing.model.ChiTietHoaDon;
 import clothing.model.HoaDon;
 import clothing.model.KhuyenMai;
+import clothing.model.LoaiGiam;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 public class HoaDonService {
@@ -24,8 +26,17 @@ public class HoaDonService {
 
         return khuyenMais.stream()
                 .filter(km -> km.getMaKhuyenMai().equals(hoaDon.getMaKhuyenMai()))
-                .map(KhuyenMai::getGiaTriGiam)
-                .map(gtriGiam -> tongTienBD.multiply(BigDecimal.valueOf(gtriGiam)))
+                .map(km -> {
+                    BigDecimal gtriGiam = km.getGiaTriGiam();
+
+                    if (km.getLoaiGiam() == LoaiGiam.PHAN_TRAM) {
+                        return tongTienBD.multiply(gtriGiam)
+                                .divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP);
+                    }
+                    else {
+                        return gtriGiam;
+                    }
+                })
                 .findFirst()
                 .orElse(BigDecimal.ZERO);
     }

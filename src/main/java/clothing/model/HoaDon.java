@@ -8,11 +8,11 @@ public final class HoaDon {
     private final String maKhachHang;
     private final String maNhanVien;
     private final String maKhuyenMai;
-    private final String phuongThucThanhToan;
+    private final PhuongThucThanhToan phuongThucThanhToan;
     private final TrangThaiDonHang trangThai;
 
     public HoaDon(String maHoaDon, LocalDateTime ngayLap, String maKhachHang, String maNhanVien,
-                  String maKhuyenMai, String phuongThucThanhToan, TrangThaiDonHang trangThai) {
+                  String maKhuyenMai, PhuongThucThanhToan phuongThucThanhToan, TrangThaiDonHang trangThai) {
         this.maHoaDon = maHoaDon;
         this.ngayLap = ngayLap;
         this.maKhachHang = maKhachHang;
@@ -32,7 +32,7 @@ public final class HoaDon {
 
     public String getMaKhuyenMai() { return maKhuyenMai; }
 
-    public String getPhuongThucThanhToan() { return phuongThucThanhToan; }
+    public PhuongThucThanhToan getPhuongThucThanhToan() { return phuongThucThanhToan; }
 
     public TrangThaiDonHang getTrangThai() { return trangThai; }
 }

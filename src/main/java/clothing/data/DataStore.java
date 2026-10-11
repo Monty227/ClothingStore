@@ -5,6 +5,7 @@ import clothing.model.*;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Function;
 
 public final class DataStore {
     private final List<SanPham> sanPhams;
@@ -63,5 +64,13 @@ public final class DataStore {
         chiTietPhieuNhaps = Collections.unmodifiableList(Arrays.asList(
                 new ChiTietPhieuNhap()
         ));
+    }
+
+    
+
+    public static <T, K> void unique(List<T> data, Function<T, K> key) {
+        if (data.stream().map(key).distinct().count() != data.size()) {
+            throw new IllegalStateException("Trùng khóa");
+        }
     }
 }

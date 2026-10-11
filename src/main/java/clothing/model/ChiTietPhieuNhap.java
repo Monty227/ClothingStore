@@ -3,32 +3,23 @@ package clothing.model;
 import java.math.BigDecimal;
 
 public final class ChiTietPhieuNhap {
-
-    private final int maPhieuNhap;
-    private final int maBienThe;
+    private final String maPhieuNhap;
+    private final String maBienThe;
     private final int soLuong;
     private final BigDecimal giaNhap;
-    private final PhieuNhap phieuNhap;
-    private final BienTheSanPham bienTheSanPham;
+    private final BigDecimal thanhTien;
 
-    public ChiTietPhieuNhap(
-            int maPhieuNhap,
-            int maBienThe,
-            int soLuong,
-            BigDecimal giaNhap,
-            PhieuNhap phieuNhap,
-            BienTheSanPham bienTheSanPham) {
+    public ChiTietPhieuNhap( String maPhieuNhap, String maBienThe, int soLuong, BigDecimal giaNhap ) {
         this.maPhieuNhap = maPhieuNhap;
         this.maBienThe = maBienThe;
         this.soLuong = soLuong;
         this.giaNhap = giaNhap;
-        this.phieuNhap = phieuNhap;
-        this.bienTheSanPham = bienTheSanPham;
+        // tính thành tiền = số lượng * giá nhập
+        this.thanhTien = giaNhap.multiply(BigDecimal.valueOf(soLuong));
     }
-    public int getMaPhieuNhap() { return maPhieuNhap; }
-    public int getMaBienThe() { return maBienThe; }
+    public String getMaPhieuNhap() { return maPhieuNhap; }
+    public String getMaBienThe() { return maBienThe; }
     public int getSoLuong() { return soLuong; }
     public BigDecimal getGiaNhap() { return giaNhap; }
-    public PhieuNhap getPhieuNhap() { return phieuNhap; }
-    public BienTheSanPham getBienTheSanPham() { return bienTheSanPham; }
+    public BigDecimal getThanhTien() { return thanhTien; }
 }

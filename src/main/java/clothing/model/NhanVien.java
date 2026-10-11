@@ -2,37 +2,24 @@ package clothing.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
 
 public final class NhanVien {
-    private final int maNhanVien;
+    private final String maNhanVien;
     private final String hoTen;
     private final String soDienThoai;
     private final String chucVu;
     private final BigDecimal luongCoBan;
     private final LocalDate ngayVaoLam;
-    private final List<HoaDon> danhSachHoaDon;
-    private final List<PhieuNhap> danhSachPhieuNhap;
 
-    public NhanVien(
-            int maNhanVien,
-            String hoTen,
-            String soDienThoai,
-            String chucVu,
-            BigDecimal luongCoBan,
-            LocalDate ngayVaoLam,
-            List<HoaDon> danhSachHoaDon,
-            List<PhieuNhap> danhSachPhieuNhap ) {
+    public NhanVien( String maNhanVien, String hoTen, String soDienThoai, String chucVu, BigDecimal luongCoBan, LocalDate ngayVaoLam ) {
         this.maNhanVien = maNhanVien;
         this.hoTen = hoTen;
         this.soDienThoai = soDienThoai;
         this.chucVu = chucVu;
         this.luongCoBan = luongCoBan;
         this.ngayVaoLam = ngayVaoLam;
-        this.danhSachHoaDon = danhSachHoaDon;
-        this.danhSachPhieuNhap = danhSachPhieuNhap;
     }
-    public int getMaNhanVien() {
+    public String getMaNhanVien() {
         return maNhanVien;
     }
     public String getHoTen() {
@@ -49,11 +36,5 @@ public final class NhanVien {
     }
     public LocalDate getNgayVaoLam() {
         return ngayVaoLam;
-    }
-    public List<HoaDon> getDanhSachHoaDon() {
-        return danhSachHoaDon;
-    }
-    public List<PhieuNhap> getDanhSachPhieuNhap() {
-        return danhSachPhieuNhap;
     }
 }

@@ -4,16 +4,16 @@ import java.time.LocalDate;
 import java.util.List;
 
 public final class KhachHang {
-    private final int maKhachHang;
+    private final String maKhachHang;
     private final String hoTen;
     private final String soDienThoai;
     private final String email;
     private final LocalDate ngaySinh;
     private final int diemTichLuy;
-    private final String hangThanhVien;
+    private final HangThanhVien hangThanhVien;
 
-    public KhachHang(int maKhachHang, String hoTen, String soDienThoai, String email,
-                     LocalDate ngaySinh, int diemTichLuy, String hangThanhVien) {
+    public KhachHang(String maKhachHang, String hoTen, String soDienThoai, String email,
+                     LocalDate ngaySinh, int diemTichLuy, HangThanhVien hangThanhVien) {
         this.maKhachHang = maKhachHang;
         this.hoTen = hoTen;
         this.soDienThoai = soDienThoai;
@@ -23,7 +23,7 @@ public final class KhachHang {
         this.hangThanhVien = hangThanhVien;
     }
 
-    public int getMaKhachHang() { return maKhachHang; }
+    public String getMaKhachHang() { return maKhachHang; }
 
     public String getHoTen() { return hoTen; }
 
@@ -35,5 +35,5 @@ public final class KhachHang {
 
     public int getDiemTichLuy() { return diemTichLuy; }
 
-    public String getHangThanhVien() { return hangThanhVien; }
+    public HangThanhVien getHangThanhVien() { return hangThanhVien; }
 }

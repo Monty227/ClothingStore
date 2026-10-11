@@ -1,6 +1,5 @@
 package clothing.model;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public final class HoaDon {
@@ -10,10 +9,10 @@ public final class HoaDon {
     private final String maNhanVien;
     private final String maKhuyenMai;
     private final String phuongThucThanhToan;
-    private final String trangThai;
+    private final TrangThaiDonHang trangThai;
 
     public HoaDon(String maHoaDon, LocalDateTime ngayLap, String maKhachHang, String maNhanVien,
-                  String maKhuyenMai, String phuongThucThanhToan, String trangThai) {
+                  String maKhuyenMai, String phuongThucThanhToan, TrangThaiDonHang trangThai) {
         this.maHoaDon = maHoaDon;
         this.ngayLap = ngayLap;
         this.maKhachHang = maKhachHang;
@@ -35,13 +34,5 @@ public final class HoaDon {
 
     public String getPhuongThucThanhToan() { return phuongThucThanhToan; }
 
-    public String getTrangThai() { return trangThai; }
-
-//    public BigDecimal getTongTienBD() {
-//        return ;
-//    }
-//
-//    public BigDecimal getTienGiam() {
-//
-//    }
+    public TrangThaiDonHang getTrangThai() { return trangThai; }
 }

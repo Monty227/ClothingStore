@@ -19,22 +19,10 @@ public final class NhanVien {
         this.luongCoBan = luongCoBan;
         this.ngayVaoLam = ngayVaoLam;
     }
-    public String getMaNhanVien() {
-        return maNhanVien;
-    }
-    public String getHoTen() {
-        return hoTen;
-    }
-    public String getSoDienThoai() {
-        return soDienThoai;
-    }
-    public String getChucVu() {
-        return chucVu;
-    }
-    public BigDecimal getLuongCoBan() {
-        return luongCoBan;
-    }
-    public LocalDate getNgayVaoLam() {
-        return ngayVaoLam;
-    }
+    public String getMaNhanVien() { return maNhanVien; }
+    public String getHoTen() { return hoTen; }
+    public String getSoDienThoai() { return soDienThoai; }
+    public String getChucVu() { return chucVu; }
+    public BigDecimal getLuongCoBan() { return luongCoBan; }
+    public LocalDate getNgayVaoLam() { return ngayVaoLam; }
 }

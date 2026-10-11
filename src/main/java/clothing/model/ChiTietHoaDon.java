@@ -3,22 +3,28 @@ package clothing.model;
 import java.math.BigDecimal;
 
 public final class ChiTietHoaDon {
-    private final int maHoaDon;
-    private final int maBienThe;
+    private final String maHoaDon;
+    private final String maBienThe;
     private final int soLuong;
     private final BigDecimal donGia;
 
-    private final HoaDon hoaDon;
-    private final BienTheSanPham bienTheSanPham;
-
-    public ChiTietHoaDon(int maHoaDon, int maBienThe, int soLuong, BigDecimal donGia,
-                         HoaDon hoaDon, BienTheSanPham bienTheSanPham) {
+    public ChiTietHoaDon(String maHoaDon, String maBienThe, int soLuong, BigDecimal donGia) {
         this.maHoaDon = maHoaDon;
         this.maBienThe = maBienThe;
         this.soLuong = soLuong;
         this.donGia = donGia;
-        this.hoaDon = hoaDon;
-        this.bienTheSanPham = bienTheSanPham;
+    }
+
+    public String getMaHoaDon() { return maHoaDon; }
+
+    public String getMaBienThe() { return maBienThe; }
+
+    public int getSoLuong() { return soLuong; }
+
+    public BigDecimal getDonGia() { return donGia; }
+
+    public BigDecimal getThanhTien() {
+        return donGia.multiply(BigDecimal.valueOf(soLuong));
     }
 }
 

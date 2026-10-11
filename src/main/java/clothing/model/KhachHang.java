@@ -11,10 +11,9 @@ public final class KhachHang {
     private final LocalDate ngaySinh;
     private final int diemTichLuy;
     private final String hangThanhVien;
-    private final List<HoaDon> hoaDons;
 
     public KhachHang(int maKhachHang, String hoTen, String soDienThoai, String email,
-                     LocalDate ngaySinh, int diemTichLuy, String hangThanhVien, List<HoaDon> hoaDons) {
+                     LocalDate ngaySinh, int diemTichLuy, String hangThanhVien) {
         this.maKhachHang = maKhachHang;
         this.hoTen = hoTen;
         this.soDienThoai = soDienThoai;
@@ -22,7 +21,6 @@ public final class KhachHang {
         this.ngaySinh = ngaySinh;
         this.diemTichLuy = diemTichLuy;
         this.hangThanhVien = hangThanhVien;
-        this.hoaDons = hoaDons;
     }
 
     public int getMaKhachHang() { return maKhachHang; }
@@ -38,6 +36,4 @@ public final class KhachHang {
     public int getDiemTichLuy() { return diemTichLuy; }
 
     public String getHangThanhVien() { return hangThanhVien; }
-
-    public List<HoaDon> getHoaDons() { return hoaDons; }
 }

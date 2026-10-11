@@ -12,20 +12,8 @@ public final class NhaCungCap {
         this.soDienThoai = soDienThoai;
         this.diaChi = diaChi;
     }
-
-    public String getMaNhaCungCap() {
-        return maNhaCungCap;
-    }
-
-    public String getTenNhaCungCap() {
-        return tenNhaCungCap;
-    }
-
-    public String getSoDienThoai() {
-        return soDienThoai;
-    }
-
-    public String getDiaChi() {
-        return diaChi;
-    }
+    public String getMaNhaCungCap() { return maNhaCungCap; }
+    public String getTenNhaCungCap() { return tenNhaCungCap; }
+    public String getSoDienThoai() { return soDienThoai; }
+    public String getDiaChi() { return diaChi; }
 }

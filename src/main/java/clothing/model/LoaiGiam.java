@@ -2,7 +2,7 @@ package clothing.model;
 
 public enum LoaiGiam {
     PHAN_TRAM("PhanTram"), SO_TIEN("SoTien");
-    public final String label;
+    private final String label;
     LoaiGiam(String label) {
         this.label = label;
     }

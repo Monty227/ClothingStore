@@ -557,11 +557,11 @@ Các thành viên trong nhóm trao đổi và xây dựng các câu truy vấn d
 | 3 | Liệt kê các hóa đơn đã thanh toán, gồm mã hóa đơn, ngày lập, tổng tiền, tiền giảm và thành tiền. |
 | 4 | Liệt kê hóa đơn cùng với tên khách hàng đã mua và nhân viên lập hóa đơn. |
 | 5 | Xem chi tiết một hóa đơn cụ thể, gồm mã hóa đơn, tên sản phẩm, kích cỡ, màu sắc, số lượng và đơn giá. |
-| 6 | Tính tổng số tiền hàng của từng hóa đơn dựa trên số lượng và đơn giá trong chi tiết hóa đơn. |
+| 6 | Liệt kê các chương trình khuyến mãi đang có hiệu lực ở một thời điểm cụ thể. |
 | 7 | Tính tổng doanh thu từ các hóa đơn đã thanh toán. |
 | 8 | Thống kê số lượng hóa đơn và tổng doanh thu theo từng khách hàng. |
 | 9 | Tìm các khách hàng chưa từng có hóa đơn đã thanh toán. |
-| 10 | Tìm các hóa đơn có thành tiền lớn hơn giá trị thành tiền trung bình của tất cả các hóa đơn. |
+| 10 | Liệt kê các khách hàng chưa sử dụng khuyến mãi trong các đơn hàng của mình. |
 
 ---
 

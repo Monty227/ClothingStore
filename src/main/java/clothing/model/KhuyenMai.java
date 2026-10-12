@@ -2,7 +2,6 @@ package clothing.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
 
 public final class KhuyenMai {
     private final String maKhuyenMai;

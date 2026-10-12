@@ -1,4 +1,4 @@
-package clothing.data;
+/*package clothing.data;
 
 import clothing.model.*;
 
@@ -74,3 +74,4 @@ public final class DataStore {
         }
     }
 }
+*/

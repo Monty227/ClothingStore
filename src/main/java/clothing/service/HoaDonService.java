@@ -7,10 +7,10 @@ import clothing.model.LoaiGiam;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDate;
 import java.util.List;
 
 public class HoaDonService {
-    // Tong tien truoc khi tru tienGiam
     public BigDecimal getTongTienBD(HoaDon hoaDon, List<ChiTietHoaDon> chiTietHoaDons) {
 
         return chiTietHoaDons.stream()
@@ -24,8 +24,19 @@ public class HoaDonService {
 
         BigDecimal tongTienBD = getTongTienBD(hoaDon, chiTietHoaDons);
 
+        if (hoaDon.getMaKhuyenMai() == null) {
+            return BigDecimal.ZERO;
+        }
+
         return khuyenMais.stream()
                 .filter(km -> km.getMaKhuyenMai().equals(hoaDon.getMaKhuyenMai()))
+                .filter(km -> tongTienBD.compareTo(km.getDonToiThieu()) >= 0)
+                .filter(km -> {
+                    LocalDate ngayLap = hoaDon.getNgayLap().toLocalDate();
+
+                    return !ngayLap.isBefore(km.getNgayBatDau()) &&
+                            !ngayLap.isAfter(km.getNgayKetThuc());
+                })
                 .map(km -> {
                     BigDecimal gtriGiam = km.getGiaTriGiam();
 
@@ -46,6 +57,9 @@ public class HoaDonService {
 
         BigDecimal tongTienBD = getTongTienBD(hoaDon, chiTietHoaDons);
         BigDecimal tienGiam = getTienGiam(hoaDon, chiTietHoaDons, khuyenMais);
+        if (tienGiam.compareTo(tongTienBD) > 0) {
+            tienGiam = tongTienBD;
+        }
         return tongTienBD.subtract(tienGiam);
     }
 }

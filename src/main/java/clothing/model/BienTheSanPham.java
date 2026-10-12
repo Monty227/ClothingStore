@@ -11,7 +11,7 @@ public class BienTheSanPham {
     private final int soLuongTon;
     private final String maVach;
 
-    public BienTheSanPham( String maBienThe, String maSanPham, String kichCo, String mauSac, int soLuongTon, String maVach,SanPham sanPham, List<ChiTietHoaDon>  chiTietHoaDons, List<ChiTietPhieuNhap> chiTietPhieuNhaps) {
+    public BienTheSanPham( String maBienThe, String maSanPham, String kichCo, String mauSac, int soLuongTon, String maVach) {
         this.maBienThe = maBienThe;
         this.maSanPham = maSanPham;
         this.kichCo = kichCo;

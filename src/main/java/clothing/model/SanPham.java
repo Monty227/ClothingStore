@@ -11,7 +11,7 @@ public class SanPham {
     private final BigDecimal giaBan;
     private final String maDanhMuc;
 
-    public SanPham(String maSanPham, String tenSanPham,String thuongHieu, String gioiTinh, BigDecimal giaBan,String maDanhMuc, List<BienTheSanPham> bienTheSanPhams ) {
+    public SanPham(String maSanPham, String tenSanPham,String thuongHieu, String gioiTinh, BigDecimal giaBan,String maDanhMuc) {
         this.maSanPham = maSanPham;
         this.tenSanPham = tenSanPham;
         this.thuongHieu = thuongHieu;

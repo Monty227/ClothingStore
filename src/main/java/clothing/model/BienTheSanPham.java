@@ -6,12 +6,12 @@ public class BienTheSanPham {
 
     private final String maBienThe;
     private final String maSanPham;
-    private final String kichCo;
+    private final KichCo kichCo;
     private final String mauSac;
     private final int soLuongTon;
     private final String maVach;
 
-    public BienTheSanPham( String maBienThe, String maSanPham, String kichCo, String mauSac, int soLuongTon, String maVach) {
+    public BienTheSanPham( String maBienThe, String maSanPham, KichCo kichCo, String mauSac, int soLuongTon, String maVach) {
         this.maBienThe = maBienThe;
         this.maSanPham = maSanPham;
         this.kichCo = kichCo;
@@ -24,7 +24,7 @@ public class BienTheSanPham {
 
     public String getMaSanPham() { return maSanPham; }
 
-    public String getKichCo() { return kichCo; }
+    public KichCo getKichCo() { return kichCo; }
 
     public String getMauSac() { return mauSac; }
 

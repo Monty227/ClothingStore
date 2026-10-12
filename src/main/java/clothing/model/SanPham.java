@@ -7,11 +7,11 @@ public class SanPham {
     private final String maSanPham;
     private final String tenSanPham;
     private final String thuongHieu;
-    private final String gioiTinh;
+    private final GioiTinh gioiTinh;
     private final BigDecimal giaBan;
     private final String maDanhMuc;
 
-    public SanPham(String maSanPham, String tenSanPham,String thuongHieu, String gioiTinh, BigDecimal giaBan,String maDanhMuc) {
+    public SanPham(String maSanPham, String tenSanPham,String thuongHieu, GioiTinh gioiTinh, BigDecimal giaBan,String maDanhMuc) {
         this.maSanPham = maSanPham;
         this.tenSanPham = tenSanPham;
         this.thuongHieu = thuongHieu;
@@ -26,7 +26,7 @@ public class SanPham {
 
     public String getThuongHieu() { return thuongHieu; }
 
-    public String getGioiTinh() { return gioiTinh; }
+    public GioiTinh getGioiTinh() { return gioiTinh; }
 
     public BigDecimal getGiaBan() { return giaBan; }
 

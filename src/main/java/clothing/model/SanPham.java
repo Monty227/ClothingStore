@@ -10,7 +10,6 @@ public class SanPham {
     private final String gioiTinh;
     private final BigDecimal giaBan;
     private final String maDanhMuc;
-    private final List<BienTheSanPham> bienTheSanPhams;
 
     public SanPham(String maSanPham, String tenSanPham,String thuongHieu, String gioiTinh, BigDecimal giaBan,String maDanhMuc, List<BienTheSanPham> bienTheSanPhams ) {
         this.maSanPham = maSanPham;
@@ -19,7 +18,6 @@ public class SanPham {
         this.gioiTinh = gioiTinh;
         this.giaBan = giaBan;
         this.maDanhMuc = maDanhMuc;
-        this.bienTheSanPhams = bienTheSanPhams;
     }
 
     public String getMaSanPham() { return maSanPham; }
@@ -34,6 +32,5 @@ public class SanPham {
 
     public String getMaDanhMuc() { return maDanhMuc; }
 
-    public List<BienTheSanPham> getBienTheSanPhams() { return bienTheSanPhams; }
 
 }

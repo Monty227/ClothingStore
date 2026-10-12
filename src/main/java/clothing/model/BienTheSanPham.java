@@ -11,10 +11,6 @@ public class BienTheSanPham {
     private final int soLuongTon;
     private final String maVach;
 
-    private final SanPham sanPham;
-    private final List<ChiTietHoaDon>  chiTietHoaDons;
-    private final List<ChiTietPhieuNhap> chiTietPhieuNhaps;
-
     public BienTheSanPham( String maBienThe, String maSanPham, String kichCo, String mauSac, int soLuongTon, String maVach,SanPham sanPham, List<ChiTietHoaDon>  chiTietHoaDons, List<ChiTietPhieuNhap> chiTietPhieuNhaps) {
         this.maBienThe = maBienThe;
         this.maSanPham = maSanPham;
@@ -22,9 +18,6 @@ public class BienTheSanPham {
         this.mauSac = mauSac;
         this.soLuongTon = soLuongTon;
         this.maVach = maVach;
-        this.sanPham = sanPham;
-        this.chiTietHoaDons = chiTietHoaDons;
-        this.chiTietPhieuNhaps = chiTietPhieuNhaps;
 
     }
     public String getMaBienThe() { return maBienThe; }
@@ -38,11 +31,5 @@ public class BienTheSanPham {
     public int getSoLuongTon() { return soLuongTon; }
 
     public String getMaVach() { return maVach; }
-
-    public SanPham getSanPham() { return sanPham; }
-
-    public List<ChiTietHoaDon> getChiTietHoaDons() {return chiTietHoaDons;}
-
-    public List<ChiTietPhieuNhap> getChiTietPhieuNhaps() { return chiTietPhieuNhaps; }
 
 }

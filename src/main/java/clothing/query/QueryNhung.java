@@ -1,12 +1,13 @@
 package clothing.query;
 
 import clothing.data.DataStore;
-import com.sun.rowset.internal.Row;
+import clothing.util.Row;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 public class QueryNhung extends BaseQuery{
     public QueryNhung(DataStore db) {
@@ -31,7 +32,7 @@ public class QueryNhung extends BaseQuery{
     }
 
     public static final List<String> HEADERS = Collections.unmodifiableList(Arrays.asList(
-
+            "Mã KH|"
     ));
     @Override
     public List<String> getHeaders() {
@@ -56,7 +57,15 @@ public class QueryNhung extends BaseQuery{
     }
 
     private List<Row> cau01() {
-        return ;
+        return db.getKhachHangs().stream()
+                .map(kh -> Row.of(
+                        kh.getMaKhachHang(),
+                        kh.getHoTen(),
+                        kh.getSoDienThoai(),
+                        kh.getEmail(),
+                        kh.getHangThanhVien()
+                ))
+                .collect(Collectors.toList());
     }
 
     private List<Row> cau02() {

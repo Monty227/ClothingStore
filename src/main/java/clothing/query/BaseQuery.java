@@ -1,7 +1,7 @@
 package clothing.query;
 
 import clothing.data.DataStore;
-import com.sun.rowset.internal.Row;
+import clothing.util.Row;
 
 import java.util.List;
 import java.util.Objects;

@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class HoaDonService {
-    public BigDecimal getTongTienBD(HoaDon hoaDon, List<ChiTietHoaDon> chiTietHoaDons) {
+    public BigDecimal getTongHDBD(HoaDon hoaDon, List<ChiTietHoaDon> chiTietHoaDons) {
 
         return chiTietHoaDons.stream()
                 .filter(cthd -> cthd.getMaHoaDon().equals(hoaDon.getMaHoaDon()))
@@ -22,7 +22,7 @@ public class HoaDonService {
     public BigDecimal getTienGiam(HoaDon hoaDon, List<ChiTietHoaDon> chiTietHoaDons,
                                   List<KhuyenMai> khuyenMais) {
 
-        BigDecimal tongTienBD = getTongTienBD(hoaDon, chiTietHoaDons);
+        BigDecimal tongHDBD = getTongHDBD(hoaDon, chiTietHoaDons);
 
         if (hoaDon.getMaKhuyenMai() == null) {
             return BigDecimal.ZERO;
@@ -30,7 +30,7 @@ public class HoaDonService {
 
         return khuyenMais.stream()
                 .filter(km -> km.getMaKhuyenMai().equals(hoaDon.getMaKhuyenMai()))
-                .filter(km -> tongTienBD.compareTo(km.getDonToiThieu()) >= 0)
+                .filter(km -> tongHDBD.compareTo(km.getDonToiThieu()) >= 0)
                 .filter(km -> {
                     LocalDate ngayLap = hoaDon.getNgayLap().toLocalDate();
 
@@ -41,7 +41,7 @@ public class HoaDonService {
                     BigDecimal gtriGiam = km.getGiaTriGiam();
 
                     if (km.getLoaiGiam() == LoaiGiam.PHAN_TRAM) {
-                        return tongTienBD.multiply(gtriGiam)
+                        return tongHDBD.multiply(gtriGiam)
                                 .divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP);
                     }
                     else {
@@ -52,14 +52,14 @@ public class HoaDonService {
                 .orElse(BigDecimal.ZERO);
     }
 
-    public BigDecimal getTongTien(HoaDon hoaDon, List<ChiTietHoaDon> chiTietHoaDons,
+    public BigDecimal getTongHD(HoaDon hoaDon, List<ChiTietHoaDon> chiTietHoaDons,
                                   List<KhuyenMai> khuyenMais) {
 
-        BigDecimal tongTienBD = getTongTienBD(hoaDon, chiTietHoaDons);
+        BigDecimal tongHDBD = getTongHDBD(hoaDon, chiTietHoaDons);
         BigDecimal tienGiam = getTienGiam(hoaDon, chiTietHoaDons, khuyenMais);
-        if (tienGiam.compareTo(tongTienBD) > 0) {
-            tienGiam = tongTienBD;
+        if (tienGiam.compareTo(tongHDBD) > 0) {
+            tienGiam = tongHDBD;
         }
-        return tongTienBD.subtract(tienGiam);
+        return tongHDBD.subtract(tienGiam);
     }
 }

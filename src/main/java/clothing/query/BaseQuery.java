@@ -4,6 +4,7 @@ import clothing.data.DataStore;
 import clothing.model.KhachHang;
 import clothing.model.KhuyenMai;
 import clothing.model.NhanVien;
+import clothing.model.SanPham;
 import clothing.util.Row;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public abstract class BaseQuery {
                 .filter(kh -> kh.getMaKhachHang().equals(maKH))
                 .map(KhachHang::getHoTen)
                 .findFirst()
-                .orElse("Không tìm thấy khách hàng");
+                .orElseThrow(() -> new IllegalStateException("Mã khách hàng: " + maKH));
     }
 
     protected String timTenNV(String maNV) {
@@ -41,14 +42,6 @@ public abstract class BaseQuery {
                 .filter(nv -> nv.getMaNhanVien().equals(maNV))
                 .map(NhanVien::getHoTen)
                 .findFirst()
-                .orElse("Không tìm thấy nhân viên");
-    }
-
-    protected String timTenKM(String maKM) {
-        return db.getKhuyenMais().stream()
-                .filter(km -> km.getMaKhuyenMai().equals(maKM))
-                .map(KhuyenMai::getTenKhuyenMai)
-                .findFirst()
-                .orElse("Không tìm thấy khuyến mãi");
+                .orElseThrow(() -> new IllegalStateException("Mã nhân viên: " + maNV));
     }
 }

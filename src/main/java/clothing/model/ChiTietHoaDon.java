@@ -9,8 +9,7 @@ public final class ChiTietHoaDon {
     private final BigDecimal donGia;
     private final BigDecimal thanhTien;
 
-    public ChiTietHoaDon(String maHoaDon, String maBienThe, int soLuong,
-                         BigDecimal donGia, BigDecimal thanhTien) {
+    public ChiTietHoaDon(String maHoaDon, String maBienThe, int soLuong, BigDecimal donGia) {
         this.maHoaDon = maHoaDon;
         this.maBienThe = maBienThe;
         this.soLuong = soLuong;

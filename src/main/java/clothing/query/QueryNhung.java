@@ -1,21 +1,15 @@
 package clothing.query;
 
 import clothing.data.DataStore;
-import clothing.model.BienTheSanPham;
-import clothing.model.HangThanhVien;
-import clothing.model.SanPham;
-import clothing.model.TrangThaiDonHang;
+import clothing.model.*;
 import clothing.util.Row;
 import clothing.service.HoaDonService;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.Supplier;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.Scanner;
 
 public class QueryNhung extends BaseQuery{
     private final HoaDonService service = new HoaDonService();
@@ -32,7 +26,7 @@ public class QueryNhung extends BaseQuery{
             "Liệt kê các chương trình khuyến mãi đang có hiệu lực ở một thời điểm cụ thể.",
             "Tính tổng doanh thu từ các hóa đơn đã thanh toán.",
             "Thống kê số lượng hóa đơn và tổng doanh thu theo từng khách hàng.",
-            "Tìm các khách hàng chưa từng có hóa đơn đã thanh toán.",
+            "Tìm các khách hàng đã từng lập hóa đơn, nhưng chưa có hóa đơn nào đã thanh toán.",
             "Liệt kê các khách hàng chưa sử dụng khuyến mãi trong các đơn hàng của mình."
     ));
     @Override
@@ -41,28 +35,52 @@ public class QueryNhung extends BaseQuery{
     }
 
     public static final List<String> HEADERS = Collections.unmodifiableList(Arrays.asList(
-            "Mã KH|"
+            "Mã KH|Tên KH|Số Điện Thoại|Email|Hạng Thành Viên",
+            "Mã KH|Tên KH|Số Điện Thoại|Hạng Thành Viên",
+            "Mã HD|Ngày lập|Tổng Tiền Ban Đầu|Tiền Giảm|Tổng HD",
+            "Mã HD|Tên KH|Tên NV",
+            "Tên SP|Kích Cỡ|Màu Sắc|Số Lượng|Đơn Giá",
+            "Mã KM|Tên KM|Loại Giảm|Giá Trị Giảm|Đơn Tối Thiểu",
+            "Mã HD|Tổng HD",
+            "Mã KH|Số lượng HD|Tổng Doanh Thu",
+            "Mã KH|Tên KH|Số Điện Thoại",
+            "Mã KH|Tên KH"
     ));
     @Override
     public List<String> getHeaders() {
         return HEADERS;
     }
 
-    public final List<Supplier<List<Row>>> QUERIES = Arrays.asList(
-            this::cau01,
-            this::cau02,
-            this::cau03,
-            this::cau04,
-            this::cau05,
-            this::cau06,
-            this::cau07,
-            this::cau08,
-            this::cau09,
-            this::cau10
-    );
     @Override
-    protected List<Supplier<List<Row>>> getQueries() {
-            return QUERIES;
+    public List<Row>  execute(int number, Scanner sc) {
+        switch (number) {
+            case 1:
+                return cau01();
+            case 2:
+                return cau02();
+            case 3:
+                return cau03();
+            case 4:
+                return cau04();
+            case 5:
+                System.out.println("Nhập mã hóa đơn cần xem: ");
+                String maHD = sc.nextLine();
+                return cau05(maHD);
+            case 6:
+                System.out.println("Nhập ngày cần xét (yyyy-mm-dd): ");
+                String ngay = sc.nextLine();
+                return cau06(LocalDate.parse(ngay));
+            case 7:
+                return cau07();
+            case 8:
+                return cau08();
+            case 9:
+                return cau09();
+            case 10:
+                return cau10();
+            default:
+                throw new IllegalArgumentException("Số câu không hợp lệ");
+        }
     }
 
     // Liệt kê tất cả khách hàng, gồm mã khách hàng, họ tên, số điện thoại, email và hạng thành viên.
@@ -81,9 +99,13 @@ public class QueryNhung extends BaseQuery{
     // Tìm các khách hàng thuộc hạng thành viên Vàng hoặc Kim cương.
     private List<Row> cau02() {
         return db.getKhachHangs().stream()
+                .filter(kh -> kh.getHangThanhVien() == HangThanhVien.VANG ||
+                        kh.getHangThanhVien() == HangThanhVien.KIMCUONG)
                 .map(kh -> Row.of(
-                        kh.getHangThanhVien() == HangThanhVien.VANG ||
-                                kh.getHangThanhVien() == HangThanhVien.KIMCUONG
+                        kh.getMaKhachHang(),
+                        kh.getHoTen(),
+                        kh.getSoDienThoai(),
+                        kh.getHangThanhVien()
                 ))
                 .collect(Collectors.toList());
     }
@@ -124,10 +146,10 @@ public class QueryNhung extends BaseQuery{
                                         db.getSanPhams().stream()
                                                 .filter(sp -> sp.getMaSanPham().equals(btsp.getMaSanPham()))
                                                 .map(sp -> Row.of(
-                                                        cthd.getMaHoaDon(),
                                                         sp.getTenSanPham(),
                                                         btsp.getKichCo(),
                                                         btsp.getMauSac(),
+                                                        cthd.getSoLuong(),
                                                         cthd.getDonGia()
                                                 ))
                                 )
@@ -144,75 +166,84 @@ public class QueryNhung extends BaseQuery{
                         km.getTenKhuyenMai(),
                         km.getLoaiGiam(),
                         km.getGiaTriGiam(),
-                        km.getDonToiThieu(),
-                        km.getNgayBatDau(),
-                        km.getNgayKetThuc()
+                        km.getDonToiThieu()
                 ))
                 .collect(Collectors.toList());
     }
 
     // Tính tổng doanh thu từ các hóa đơn đã thanh toán.
-/*    private List<Row> cau07() {
-        BigDecimal doanhthu = BigDecimal.ZERO;
-        List<Row> kq = new ArrayList<>();
-        db.getHoaDons().stream()
+    private List<Row> cau07() {
+        List<Row> ketQua = db.getHoaDons().stream()
                 .filter(hd -> hd.getTrangThai() == TrangThaiDonHang.DA_THANH_TOAN)
-                .forEach(hd ->
-                        BigDecimal tongHD = service.getTongHD(hd, db.getChiTietHoaDons(), db.getKhuyenMais())
-                )
+                .map(hd -> Row.of(
+                        hd.getMaHoaDon(),
+                        service.getTongHD(hd, db.getChiTietHoaDons(), db.getKhuyenMais())
+                ))
+                .collect(Collectors.toList());
+
+        BigDecimal doanhThu = ketQua.stream()
+                .map(row -> (BigDecimal) row.getValues().get(1))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        ketQua.add(Row.of("Tổng doanh thu: ", doanhThu));
+        return ketQua;
+    }
+
+    // Thống kê số lượng hóa đơn và tổng doanh thu theo từng khách hàng.
+    private List<Row> cau08() {
+        return db.getHoaDons().stream()
+                .map(HoaDon::getMaKhachHang).distinct()
+                .map(maKH -> Row.of(
+                        maKH,
+                        db.getHoaDons().stream()
+                                .filter(hd -> hd.getMaKhachHang().equals(maKH))
+                                .count(),
+                        db.getHoaDons().stream()
+                                .filter(hd -> hd.getMaKhachHang().equals(maKH))
+                                .filter(hd -> hd.getTrangThai() == TrangThaiDonHang.DA_THANH_TOAN)
+                                .map(hd -> service.getTongHD(hd, db.getChiTietHoaDons(), db.getKhuyenMais()))
+                                .reduce(BigDecimal.ZERO, BigDecimal::add)
+                ))
                 .collect(Collectors.toList());
     }
- */
-    // Tính tổng doanh thu từ các hóa đơn đã thanh toán.
-/*    private List<Row> cau07() {
-        BigDecimal[] doanhthu = {BigDecimal.ZERO};
+
+    // Tìm các khách hàng đã từng lập hóa đơn, nhưng chưa có hóa đơn nào đã thanh toán.
+    private List<Row> cau09() {
         List<Row> ketQua = new ArrayList<>();
 
         db.getHoaDons().stream()
-                .filter(hd -> hd.getTrangThai() == TrangThaiDonHang.DA_THANH_TOAN)
-                .forEach(hd -> {
-                    BigDecimal tongHD = service.getTongHD(
-                            hd, db.getChiTietHoaDons(), db.getKhuyenMais());
-
-                    doanhthu[0] = doanhthu[0].add(tongHD);
-
-                    ketQua.add(Row.of(
-                            hd.getMaHoaDon(),
-                            tongHD,
-                            hd.getTrangThai()
-                    ));
+                .map(HoaDon::getMaKhachHang).distinct()
+                .forEach(maKH -> {
+                    if (db.getHoaDons().stream()
+                            .filter(hd -> hd.getMaKhachHang().equals(maKH))
+                            .noneMatch(hd -> hd.getTrangThai() == TrangThaiDonHang.DA_THANH_TOAN))
+                        ketQua.add(Row.of(
+                                maKH,
+                                timTenKH(maKH),
+                                db.getKhachHangs().stream()
+                                        .filter(kh -> kh.getMaKhachHang().equals(maKH))
+                                        .map(KhachHang::getSoDienThoai)
+                                        .findFirst()
+                                        .orElse("Không có")
+                        ));
                 });
-
-        ketQua.add(Row.of("TỔNG DOANH THU", doanhthu[0], ""));
-
         return ketQua;
-    }
-*/
-    // Thống kê số lượng hóa đơn và tổng doanh thu theo từng khách hàng.
-    private List<Row> cau08() {
-        return ;
-    }
-
-    // Tìm các khách hàng chưa từng có hóa đơn đã thanh toán.
-    private List<Row> cau09() {
-        return db.getHoaDons().stream().anyMatch(
-                db.getKhachHangs().stream().noneMatch(kh -> kh.getMaKhachHang().equals())
-        )
     }
 
     // Liệt kê các khách hàng chưa sử dụng khuyến mãi trong các đơn hàng của mình.
     private List<Row> cau10() {
-        return db.getHoaDons().stream()
-                .filter(hd -> hd.getMaKhuyenMai() == null)
-                .flatMap(hd ->
-                        db.getKhachHangs().stream()
-                                .filter(kh -> kh.getMaKhachHang().equals(hd.getMaKhachHang()))
-                                .map(kh -> Row.of(
-                                        hd.getMaHoaDon(),
-                                        kh.getHoTen(),
-                                        kh.getSoDienThoai()
-                                ))
-                )
-                .collect(Collectors.toList());
+        List<Row> ketQua = new ArrayList<>();
+
+        db.getHoaDons().stream()
+                .map(HoaDon::getMaKhachHang)
+                .forEach(maKH -> {
+                    if (db.getHoaDons().stream()
+                            .filter(hd -> hd.getMaKhachHang().equals(maKH))
+                            .noneMatch(hd -> hd.getMaKhuyenMai() != null))
+                        ketQua.add(Row.of(
+                                maKH,
+                                timTenKH(maKH)
+                        ));
+                });
+        return ketQua;
     }
 }

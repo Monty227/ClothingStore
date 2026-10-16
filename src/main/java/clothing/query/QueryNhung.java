@@ -68,8 +68,8 @@ public class QueryNhung extends BaseQuery{
                 return cau05(maHD);
             case 6:
                 System.out.println("Nhập ngày cần xét (yyyy-mm-dd): ");
-                String ngay = sc.nextLine();
-                return cau06(LocalDate.parse(ngay));
+                LocalDate ngay = LocalDate.parse(sc.nextLine());
+                return cau06(ngay);
             case 7:
                 return cau07();
             case 8:
@@ -84,7 +84,7 @@ public class QueryNhung extends BaseQuery{
     }
 
     // Liệt kê tất cả khách hàng, gồm mã khách hàng, họ tên, số điện thoại, email và hạng thành viên.
-    private List<Row> cau01() {
+    public List<Row> cau01() {
         return db.getKhachHangs().stream()
                 .map(kh -> Row.of(
                         kh.getMaKhachHang(),
@@ -97,7 +97,7 @@ public class QueryNhung extends BaseQuery{
     }
 
     // Tìm các khách hàng thuộc hạng thành viên Vàng hoặc Kim cương.
-    private List<Row> cau02() {
+    public List<Row> cau02() {
         return db.getKhachHangs().stream()
                 .filter(kh -> kh.getHangThanhVien() == HangThanhVien.VANG ||
                         kh.getHangThanhVien() == HangThanhVien.KIMCUONG)
@@ -111,7 +111,7 @@ public class QueryNhung extends BaseQuery{
     }
 
     // Liệt kê các hóa đơn đã thanh toán, gồm mã hóa đơn, ngày lập, tổng tiền ban đầu, tiền giảm và tổng hóa đơn.
-    private List<Row> cau03() {
+    public List<Row> cau03() {
         return db.getHoaDons().stream()
                 .filter(hd -> hd.getTrangThai() == TrangThaiDonHang.DA_THANH_TOAN)
                 .map(hd -> Row.of(
@@ -125,7 +125,7 @@ public class QueryNhung extends BaseQuery{
     }
 
     // Liệt kê hóa đơn cùng với tên khách hàng đã mua và nhân viên lập hóa đơn.
-    private List<Row> cau04() {
+    public List<Row> cau04() {
         return db.getHoaDons().stream()
                 .map(hd -> Row.of(
                         hd.getMaHoaDon(),
@@ -136,7 +136,7 @@ public class QueryNhung extends BaseQuery{
     }
 
     // Xem chi tiết một hóa đơn cụ thể, gồm mã hóa đơn, tên sản phẩm, kích cỡ, màu sắc, số lượng và đơn giá.
-    private List<Row> cau05(String maHD) {
+    public List<Row> cau05(String maHD) {
         return db.getChiTietHoaDons().stream()
                 .filter(cthd -> cthd.getMaHoaDon().equals(maHD))
                 .flatMap(cthd ->
@@ -158,7 +158,7 @@ public class QueryNhung extends BaseQuery{
     }
 
     // Liệt kê các chương trình khuyến mãi đang có hiệu lực ở một thời điểm cụ thể.
-    private List<Row> cau06(LocalDate ngay) {
+    public List<Row> cau06(LocalDate ngay) {
         return db.getKhuyenMais().stream()
                 .filter(km -> km.getNgayBatDau().isBefore(ngay) && km.getNgayKetThuc().isAfter(ngay))
                 .map(km -> Row.of(
@@ -172,7 +172,7 @@ public class QueryNhung extends BaseQuery{
     }
 
     // Tính tổng doanh thu từ các hóa đơn đã thanh toán.
-    private List<Row> cau07() {
+    public List<Row> cau07() {
         List<Row> ketQua = db.getHoaDons().stream()
                 .filter(hd -> hd.getTrangThai() == TrangThaiDonHang.DA_THANH_TOAN)
                 .map(hd -> Row.of(
@@ -189,7 +189,7 @@ public class QueryNhung extends BaseQuery{
     }
 
     // Thống kê số lượng hóa đơn và tổng doanh thu theo từng khách hàng.
-    private List<Row> cau08() {
+    public List<Row> cau08() {
         return db.getHoaDons().stream()
                 .map(HoaDon::getMaKhachHang).distinct()
                 .map(maKH -> Row.of(
@@ -207,7 +207,7 @@ public class QueryNhung extends BaseQuery{
     }
 
     // Tìm các khách hàng đã từng lập hóa đơn, nhưng chưa có hóa đơn nào đã thanh toán.
-    private List<Row> cau09() {
+    public List<Row> cau09() {
         List<Row> ketQua = new ArrayList<>();
 
         db.getHoaDons().stream()
@@ -230,7 +230,7 @@ public class QueryNhung extends BaseQuery{
     }
 
     // Liệt kê các khách hàng chưa sử dụng khuyến mãi trong các đơn hàng của mình.
-    private List<Row> cau10() {
+    public List<Row> cau10() {
         List<Row> ketQua = new ArrayList<>();
 
         db.getHoaDons().stream()

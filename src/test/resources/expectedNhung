@@ -1,0 +1,43 @@
+01  KH01    Nguyễn Minh Lan 14/03/2002  0901000001  minhlan@example.com 1250    KimCuong
+01  KH02    Trần Quốc Bảo   22/07/2001  0901000002  quocbao@example.com 820 Vang
+01  KH03    Lê Thu Hà   09/01/2003  0901000003  thuha@example.com   450 Bac
+01  KH04    Phạm Gia Huy    30/11/2000  0901000004  giahuy@example.com  80  Thuong
+01  KH05    Võ Ngọc Lan 18/05/2002  0901000005  ngoclan@example.com 990 Vang
+01  KH06    Đặng Hoàng Nam  05/09/2001  0901000006  hoangnam@example.com    1300    KimCuong
+01  KH07    Bùi Khánh Linh  14/02/2004  0901000007  khanhlinh@example.com   120 Thuong
+01  KH08    Đỗ Đức Long 25/12/1999  0901000008  duclong@example.com 560 Bac
+01  KH09    Phan Mai Chi    17/08/2003  0901000009  maichi@example.com  0   Thuong
+01  KH10    Hoàng Nhật Vy   06/06/1998  0901000010  nhatvy@example.com  300 Bac
+02  KH01    Nguyễn Minh Lan 14/03/2002  0901000001  KimCuong
+02  KH02    Trần Quốc Bảo   22/07/2001  0901000002  Vang
+02  KH05    Võ Ngọc Lan 18/05/2002  0901000005  Vang
+02  KH06    Đặng Hoàng Nam  05/09/2001  0901000006  KimCuong
+03  HD01    02/10/2026 10:15:00 KH01    NV02    KM01    ChuyenKhoan 945.000
+03  HD02    03/10/2026 11:20:00 KH02    NV03    KM02    TienMat 1.140.000
+03  HD03    04/10/2026 14:05:00 KH03    NV02    NULL    The 680.000
+03  HD04    05/10/2026 16:40:00 KH04    NV06    KM05    ChuyenKhoan 950.000
+03  HD05    06/10/2026 09:30:00 KH01    NV03    KM03    TienMat 1.250.000
+03  HD06    07/10/2026 13:10:00 KH05    NV02    NULL    The 1.220.000
+03  HD07    08/10/2026 15:00:00 KH06    NV06    KM01    ChuyenKhoan 1.980.000
+03  HD10    11/10/2026 12:25:00 KH08    NV06    KM04    ChuyenKhoan 650.000
+03  HD12    12/10/2026 19:00:00 KH10    NV02    NULL    The 390.000
+04  HD01    Nguyễn Minh Lan    Trần Mỹ Duyên
+04  HD02    Trần Quốc Bảo    Lê Anh Tuấn
+04  HD03    Lê Thu Hà    Trần Mỹ Duyên
+04  HD04    Phạm Gia Huy    Đặng Thảo My
+04  HD05    Nguyễn Minh Lan    Lê Anh Tuấn
+04  HD06    Võ Ngọc Lan    Trần Mỹ Duyên
+04  HD07    Đặng Hoàng Nam    Đặng Thảo My
+04  HD08    Trần Quốc Bảo   Lê Anh Tuấn
+04  HD09    Bùi Khánh Linh  Trần Mỹ Duyên
+04  HD10    Đỗ Đức Long    Đặng Thảo My
+04  HD11    Lê Thu Hà   Lê Anh Tuấn
+04  HD12    Hoàng Nhật Vy    Trần Mỹ Duyên
+05  Áo sơ mi Oxford M Trắng 2  300.000   600.000
+05  Áo polo Classic M Đen   1   450.000 450.000
+05  Tổng hóa đơn ban đầu:   1.050.000
+05  Tiền giảm:   105.000
+05  Tổng hóa đơn:   945.000
+06  KM01    Giảm 10 phần trăm   PhanTram    10  100.000
+06  KM02    Giảm trực tiếp 30.000   SoTien  30.000  150.000
+06  KM05    Giảm 5 phần trăm    PhanTram    5   0

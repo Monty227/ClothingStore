@@ -14,11 +14,8 @@ public class TestQueryNhung {
         QueryNhung query = new QueryNhung(db);
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Chon cau truy van: ");
-        int number = Integer.parseInt(sc.nextLine());
-
-        List<Row> ketQua = query.execute(number, sc);
-        String header = query.getHeaders().get(number - 1);
+        List<Row> ketQua = query.execute(4, sc);
+        String header = query.getHeaders().get(4 - 1);
 
         ConsoleTable.print(header, ketQua);
         sc.close();
@@ -76,5 +73,16 @@ public final class RegressionTest {
         if (!condition) throw new AssertionError(message);
     }
 }
-
+Mã KH | Số lượng HD | Tổng Doanh Thu
+-------+-------------+----------------
+ KH01  | 2           | 2.195.000
+ KH02  | 2           | 1.140.000
+ KH03  | 2           | 680.000
+ KH04  | 1           | 950.000
+ KH05  | 1           | 1.220.000
+ KH06  | 1           | 1.980.000
+ KH07  | 1           | 0
+ KH08  | 1           | 650.000
+ KH10  | 1           | 390.000
+Số dòng: 9
  */

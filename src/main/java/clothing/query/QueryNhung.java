@@ -7,6 +7,7 @@ import clothing.service.HoaDonService;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.Scanner;
@@ -18,11 +19,11 @@ public class QueryNhung extends BaseQuery{
     }
 
     public static final List<String> TITLES = Collections.unmodifiableList(Arrays.asList(
-            "Liệt kê tất cả khách hàng, gồm mã khách hàng, họ tên, số điện thoại, email và hạng thành viên.",
+            "Liệt kê tất cả khách hàng.",
             "Tìm các khách hàng thuộc hạng thành viên Vàng hoặc Kim cương.",
-            "Liệt kê các hóa đơn đã thanh toán, gồm mã hóa đơn, ngày lập, tổng tiền, tiền giảm và thành tiền.",
+            "Liệt kê các hóa đơn đã thanh toán.",
             "Liệt kê hóa đơn cùng với tên khách hàng đã mua và nhân viên lập hóa đơn.",
-            "Xem chi tiết một hóa đơn cụ thể, gồm mã hóa đơn, tên sản phẩm, kích cỡ, màu sắc, số lượng và đơn giá.",
+            "Xem chi tiết một hóa đơn cụ thể.",
             "Liệt kê các chương trình khuyến mãi đang có hiệu lực ở một thời điểm cụ thể.",
             "Tính tổng doanh thu từ các hóa đơn đã thanh toán.",
             "Thống kê số lượng hóa đơn và tổng doanh thu theo từng khách hàng.",
@@ -35,11 +36,11 @@ public class QueryNhung extends BaseQuery{
     }
 
     public static final List<String> HEADERS = Collections.unmodifiableList(Arrays.asList(
-            "Mã KH|Tên KH|Số Điện Thoại|Email|Hạng Thành Viên",
-            "Mã KH|Tên KH|Số Điện Thoại|Hạng Thành Viên",
-            "Mã HD|Ngày lập|Tổng Tiền Ban Đầu|Tiền Giảm|Tổng HD",
+            "Mã KH|Tên KH|Ngày Sinh|Số Điện Thoại|Email|Điểm Tích Lũy|Hạng Thành Viên",
+            "Mã KH|Tên KH|Ngày Sinh|Số Điện Thoại|Hạng Thành Viên",
+            "Mã HD|Ngày lập|Mã KH|Mã KM|Phương Thức Thanh Toán|Tổng HD",
             "Mã HD|Tên KH|Tên NV",
-            "Tên SP|Kích Cỡ|Màu Sắc|Số Lượng|Đơn Giá",
+            "Tên SP|Kích Cỡ|Màu Sắc|Số Lượng|Đơn Giá|Thành Tiền",
             "Mã KM|Tên KM|Loại Giảm|Giá Trị Giảm|Đơn Tối Thiểu",
             "Mã HD|Tổng HD",
             "Mã KH|Số lượng HD|Tổng Doanh Thu",
@@ -63,12 +64,13 @@ public class QueryNhung extends BaseQuery{
             case 4:
                 return cau04();
             case 5:
-                System.out.println("Nhập mã hóa đơn cần xem: ");
+                System.out.print("Nhập mã hóa đơn cần xem: ");
                 String maHD = sc.nextLine();
                 return cau05(maHD);
             case 6:
-                System.out.println("Nhập ngày cần xét (yyyy-mm-dd): ");
-                LocalDate ngay = LocalDate.parse(sc.nextLine());
+                System.out.print("Nhập ngày cần xét (yyyy-mm-dd): ");
+                DateTimeFormatter format = DateTimeFormatter.ofPattern("uuuu-M-d");
+                LocalDate ngay = LocalDate.parse(sc.nextLine(), format);
                 return cau06(ngay);
             case 7:
                 return cau07();
@@ -83,14 +85,16 @@ public class QueryNhung extends BaseQuery{
         }
     }
 
-    // Liệt kê tất cả khách hàng, gồm mã khách hàng, họ tên, số điện thoại, email và hạng thành viên.
+    // Liệt kê tất cả khách hàng.
     public List<Row> cau01() {
         return db.getKhachHangs().stream()
                 .map(kh -> Row.of(
                         kh.getMaKhachHang(),
                         kh.getHoTen(),
+                        kh.getNgaySinh(),
                         kh.getSoDienThoai(),
                         kh.getEmail(),
+                        kh.getDiemTichLuy(),
                         kh.getHangThanhVien()
                 ))
                 .collect(Collectors.toList());
@@ -104,21 +108,23 @@ public class QueryNhung extends BaseQuery{
                 .map(kh -> Row.of(
                         kh.getMaKhachHang(),
                         kh.getHoTen(),
+                        kh.getNgaySinh(),
                         kh.getSoDienThoai(),
                         kh.getHangThanhVien()
                 ))
                 .collect(Collectors.toList());
     }
 
-    // Liệt kê các hóa đơn đã thanh toán, gồm mã hóa đơn, ngày lập, tổng tiền ban đầu, tiền giảm và tổng hóa đơn.
+    // Liệt kê các hóa đơn đã thanh toán.
     public List<Row> cau03() {
         return db.getHoaDons().stream()
                 .filter(hd -> hd.getTrangThai() == TrangThaiDonHang.DA_THANH_TOAN)
                 .map(hd -> Row.of(
                         hd.getMaHoaDon(),
                         hd.getNgayLap(),
-                        service.getTongHDBD(hd, db.getChiTietHoaDons()),
-                        service.getTienGiam(hd, db.getChiTietHoaDons(), db.getKhuyenMais()),
+                        hd.getMaKhachHang(),
+                        hd.getMaKhuyenMai(),
+                        hd.getPhuongThucThanhToan(),
                         service.getTongHD(hd, db.getChiTietHoaDons(), db.getKhuyenMais())
                 ))
                 .collect(Collectors.toList());
@@ -135,9 +141,12 @@ public class QueryNhung extends BaseQuery{
                 .collect(Collectors.toList());
     }
 
-    // Xem chi tiết một hóa đơn cụ thể, gồm mã hóa đơn, tên sản phẩm, kích cỡ, màu sắc, số lượng và đơn giá.
+    // Xem chi tiết một hóa đơn cụ thể.
     public List<Row> cau05(String maHD) {
-        return db.getChiTietHoaDons().stream()
+        boolean t = db.getHoaDons().stream()
+                .noneMatch(hd -> hd.getMaHoaDon().equals(maHD));
+        if (t) throw new IllegalStateException("Mã hóa đơn " + maHD + " không tồn tại!");
+        List<Row> ketQua = db.getChiTietHoaDons().stream()
                 .filter(cthd -> cthd.getMaHoaDon().equals(maHD))
                 .flatMap(cthd ->
                         db.getBienTheSanPhams().stream()
@@ -150,17 +159,31 @@ public class QueryNhung extends BaseQuery{
                                                         btsp.getKichCo(),
                                                         btsp.getMauSac(),
                                                         cthd.getSoLuong(),
-                                                        cthd.getDonGia()
+                                                        cthd.getDonGia(),
+                                                        cthd.getThanhTien()
                                                 ))
                                 )
                 )
                 .collect(Collectors.toList());
+
+        BigDecimal tongHDBD = ketQua.stream()
+                .map(row -> (BigDecimal) row.getValues().get(5))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        HoaDon hoaDon = db.getHoaDons().stream()
+                .filter(hd -> hd.getMaHoaDon().equals(maHD))
+                .findFirst()
+                .orElse(null);
+        BigDecimal tienGiam = service.getTienGiam(hoaDon, db.getChiTietHoaDons(), db.getKhuyenMais());
+        ketQua.add(Row.of("Tổng hóa đơn ban đầu: ", tongHDBD));
+        ketQua.add(Row.of("Tiền giảm: ", tienGiam));
+        ketQua.add(Row.of("Tổng hóa đơn: ", tongHDBD.subtract(tienGiam)));
+        return ketQua;
     }
 
     // Liệt kê các chương trình khuyến mãi đang có hiệu lực ở một thời điểm cụ thể.
     public List<Row> cau06(LocalDate ngay) {
         return db.getKhuyenMais().stream()
-                .filter(km -> km.getNgayBatDau().isBefore(ngay) && km.getNgayKetThuc().isAfter(ngay))
+                .filter(km -> !km.getNgayBatDau().isAfter(ngay) && !km.getNgayKetThuc().isBefore(ngay))
                 .map(km -> Row.of(
                         km.getMaKhuyenMai(),
                         km.getTenKhuyenMai(),

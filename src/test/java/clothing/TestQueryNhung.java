@@ -5,20 +5,33 @@ import clothing.query.QueryNhung;
 import clothing.util.ConsoleTable;
 import clothing.util.Row;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class TestQueryNhung {
-    public static void main(String[] args) {
-        DataStore db = new DataStore();
+    public static void main(String[] args) throws IOException {
+        DataStore db  = new DataStore();
         QueryNhung query = new QueryNhung(db);
-        Scanner sc = new Scanner(System.in);
 
-        List<Row> ketQua = query.execute(4, sc);
-        String header = query.getHeaders().get(4 - 1);
+        List<String> expected = Files.readAllLines(
+                Paths.get("src/test/resources/expectedNhung"),
+                StandardCharsets.UTF_8
+        );
 
-        ConsoleTable.print(header, ketQua);
-        sc.close();
+        int soCauPass = 0;
+        for (int i = 1; i <= 10; i++) {
+            String maCau = String.format("%02d\t", i);
+            List<String> want = expected.stream().filter(s -> s.startsWith(maCau))
+                    .map(s -> s.substring(maCau.length())).collect(Collectors.toList());
+            List<String> actual = query.execute(i, "").stream().map(row -> row.getValues().stream()
+                    .map(ConsoleTable::raw).collect(Collectors.joining("\t"))).collect(Collectors.toList());
+        }
+        System.out.println("So dong ket qua chuan: " + expected.size());
     }
 
 }
@@ -73,16 +86,4 @@ public final class RegressionTest {
         if (!condition) throw new AssertionError(message);
     }
 }
-Mã KH | Số lượng HD | Tổng Doanh Thu
--------+-------------+----------------
- KH01  | 2           | 2.195.000
- KH02  | 2           | 1.140.000
- KH03  | 2           | 680.000
- KH04  | 1           | 950.000
- KH05  | 1           | 1.220.000
- KH06  | 1           | 1.980.000
- KH07  | 1           | 0
- KH08  | 1           | 650.000
- KH10  | 1           | 390.000
-Số dòng: 9
  */

@@ -63,7 +63,7 @@ public class Main {
             System.out.println((i + 1) + ". " + titles.get(i));
         }
 
-        System.out.println("-1. Quay lại menu thành viên");
+        System.out.println("-1. Quay lại menu chức năng");
         System.out.println("0. Thoát chương trình");
         System.out.println("===================================");
     }
@@ -77,8 +77,13 @@ public class Main {
             int choice = Integer.parseInt(sc.nextLine());
 
             if (choice == 0) {
+                System.out.println("Đã thoát chương trình.");
+                System.exit(0);
+            }
+            else if (choice == -1) {
                 tiepTuc = false;
-            } else if (choice >= 1 && choice <= query.getTitles().size()) {
+            }
+            else if (choice >= 1 && choice <= query.getTitles().size()) {
                 try {
                     List<Row> result = query.execute(choice, sc);
                     String header = query.getHeaders().get(choice - 1);

@@ -3,7 +3,6 @@ package clothing.query;
 import clothing.data.DataStore;
 import clothing.model.*;
 import clothing.util.Row;
-import clothing.service.HoaDonService;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -13,7 +12,6 @@ import java.util.stream.Collectors;
 import java.util.Scanner;
 
 public class QueryNhung extends BaseQuery{
-    private final HoaDonService service = new HoaDonService();
     public QueryNhung(DataStore db) {
         super(db);
     }
@@ -125,7 +123,7 @@ public class QueryNhung extends BaseQuery{
                         hd.getMaKhachHang(),
                         hd.getMaKhuyenMai(),
                         hd.getPhuongThucThanhToan(),
-                        service.getTongHD(hd, db.getChiTietHoaDons(), db.getKhuyenMais())
+                        getTongHD(hd, db.getChiTietHoaDons(), db.getKhuyenMais())
                 ))
                 .collect(Collectors.toList());
     }
@@ -173,7 +171,7 @@ public class QueryNhung extends BaseQuery{
                 .filter(hd -> hd.getMaHoaDon().equals(maHD))
                 .findFirst()
                 .orElse(null);
-        BigDecimal tienGiam = service.getTienGiam(hoaDon, db.getChiTietHoaDons(), db.getKhuyenMais());
+        BigDecimal tienGiam = getTienGiam(hoaDon, db.getChiTietHoaDons(), db.getKhuyenMais());
         ketQua.add(Row.of("Tổng hóa đơn ban đầu: ", tongHDBD));
         ketQua.add(Row.of("Tiền giảm: ", tienGiam));
         ketQua.add(Row.of("Tổng hóa đơn: ", tongHDBD.subtract(tienGiam)));
@@ -200,7 +198,7 @@ public class QueryNhung extends BaseQuery{
                 .filter(hd -> hd.getTrangThai() == TrangThaiDonHang.DA_THANH_TOAN)
                 .map(hd -> Row.of(
                         hd.getMaHoaDon(),
-                        service.getTongHD(hd, db.getChiTietHoaDons(), db.getKhuyenMais())
+                        getTongHD(hd, db.getChiTietHoaDons(), db.getKhuyenMais())
                 ))
                 .collect(Collectors.toList());
 
@@ -223,7 +221,7 @@ public class QueryNhung extends BaseQuery{
                         db.getHoaDons().stream()
                                 .filter(hd -> hd.getMaKhachHang().equals(maKH))
                                 .filter(hd -> hd.getTrangThai() == TrangThaiDonHang.DA_THANH_TOAN)
-                                .map(hd -> service.getTongHD(hd, db.getChiTietHoaDons(), db.getKhuyenMais()))
+                                .map(hd -> getTongHD(hd, db.getChiTietHoaDons(), db.getKhuyenMais()))
                                 .reduce(BigDecimal.ZERO, BigDecimal::add)
                 ))
                 .collect(Collectors.toList());

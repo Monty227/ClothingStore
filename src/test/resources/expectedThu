@@ -1,31 +1,31 @@
-01	DM01	Áo	Áo thun,	áo sơ mi và áo khoác
-01	DM02	Quần	Quần	dài	và	quần	short
-01	DM03	Váy	Váy	và	đầm
-01	DM04	Đồ	thể	thao	Trang	phục	vận	động
-01	DM05	Phụ	kiện	Phụ	kiện	thời	trang
-02	SP01	Áo	thun	Basic	Mây	UNISEX	250000
-02	SP02	Áo	sơ	mi	Oxford	Urban	NAM	300000
-02	SP03	Áo	polo	Classic	Urban	NAM	450000
-02	SP04	Áo	kiểu	Linen	Luna	NU	700000
-02	SP05	Áo	khoác	Denim	North	UNISEX	950000
-02	SP06	Quần	jeans	Slim	North	NAM	650000
-02	SP07	Quần	tây	nữ	Luna	NU	520000
-02	SP08	Quần	short	thể	thao	Move	UNISEX	280000
-02	SP09	Váy	midi	Luna	NU	720000
-02	SP10    Đầm	dự	tiệc	Luna	NU	1250000
-02	SP11	Áo	thể	thao	Move	TRE_EM	390000
-02	SP12	Thắt	lưng	da	Craft	UNISEX	180000
-03	SP01	Áo	thun	Basic	Mây	UNISEX	250000
-03	SP02	Áo	sơ	mi	Oxford	Urban	NAM	300000
-03	SP03	Áo	polo	Classic	Urban	NAM	450000
-03	SP04	Áo	kiểu	Linen	Luna	NU	700000
-03	SP06	Quần	jeans	Slim	North	NAM	650000
-03	SP07	Quần	tây	nữ	Luna	NU	520000
-03	SP08	Quần	short	thể	thao	Move	UNISEX	280000
-03	SP11	Áo	thể	thao	Move	TRE_EM	390000
-04	SP03	Áo	polo	Classic	Urban	NAM	450000
-04	SP06	Quần	jeans	Slim	North	NAM	650000
-04	SP02	Áo	sơ	mi	Oxford	Urban	NAM	300000
+01	DM01	Áo		Áo thun,áo sơ mi và áo khoác
+01	DM02	Quần				Quần dài và quần short
+01	DM03	Váy	Váy và đầm
+01	DM04	Đồ thể thao	Trang phục vận động
+01	DM05	Phụ kiện				Phụ kiện thời trang
+02	SP01	Áo thun Basic			Mây	UNISEX	250000
+02	SP02	Áo sơ mi	Oxford	Urban	NAM	300000
+02	SP03	Áo polo Classic	Urban	NAM	450000
+02	SP04	Áo kiểu Linen	Luna	NU	700000
+02	SP05	Áo khoác Denim	North	UNISEX	950000
+02	SP06	Quần jeans Slim	North			NAM	650000
+02	SP07	Quần tây nữ	Luna	NU		520000
+02	SP08	Quần short thể thao	Move	UNISEX	280000
+02	SP09	Váy midi	Luna	NU	720000
+02	SP10				Đầm dự tiệc	Luna	NU	1250000
+02	SP11	Áo thể thao	Move				TRE_EM	390000
+02	SP12	Thắt lưng da	Craft		UNISEX	180000
+03	SP01	Áo thun Basic	Mây	UNISEX	250000
+03	SP02	Áo sơ mi	Oxford	Urban	NAM	300000
+03	SP03	Áo polo Classic	Urban	NAM	450000
+03	SP04	Áo kiểu Linen	Luna	NU	700000
+03	SP06	Quần jeans Slim	North	NAM	650000
+03	SP07	Quần tây nữ	Luna	NU	520000
+03	SP08	Quần short thể thao	Move	UNISEX	280000
+03	SP11	Áo thể thao	Move	TRE_EM	390000
+04	SP03	Áo polo Classic	Urban	NAM	450000
+04	SP06	Quần jeans Slim	North	NAM	650000
+04	SP02	Áo sơ mi Oxford	Urban	NAM	300000
 05	BT01	SP01	S	Trắng	5
 05	BT02	SP01	M	Đen	8
 05	BT05	SP03	S	Đen	0
@@ -40,35 +40,35 @@
 05	BT20	SP10	M	Đen	8
 05	BT21	SP10	L	Đen	5
 05	BT23	SP11	M	Xanh	4
-06	SP01	Áo	thun	Basic	Áo
-06	SP02	Áo	sơ	mi	Oxford	Áo
-06	SP03	Áo	polo	Classic	Áo
-06	SP04	Áo	kiểu	Linen	Áo
-06	SP05	Áo	khoác	Denim	Áo
-06	SP06	Quần	jeans	Slim	Quần
-06	SP07	Quần	tây	nữ	Quần
-06	SP08	Quần	short	thể	thao	Đồ	thể	thao
-06	SP09	Váy	midi	Váy
-06	SP10	Đầm	dự	tiệc	Váy
-06	SP11	Áo	thể	thao	Đồ	thể	thao
-06	SP12	Thắt	lưng	da	Phụ	kiện
-07	SP01	Áo	thun	Basic	S	Trắng	5
-07	SP01	Áo	thun	Basic	M	Đen	8
-07	SP02	Áo	sơ	mi	Oxford	M	Trắng	10
-07	SP02	Áo	sơ	mi	Oxford	L	Xanh	15
-07	SP03	Áo	polo	Classic	S	Đen	0
-07	SP03	Áo	polo	Classic	M	Đen	22
-07	SP03	Áo	polo	Classic	L	Trắng	7
-07	SP04	Áo	kiểu	Linen	S	Be	4
-07	SP04	Áo	kiểu	Linen	M	Be	12
-07	SP05	Áo	khoác	Denim	L	Xanh	3
-07	SP05	Áo	khoác	Denim	XL	Đen	0
-07	SP06	Quần	jeans	Slim	M	Xanh	18
-07	SP06	Quần	jeans	Slim	L	Đen	9
-07	SP07	Quần	tây nữ	S	Đen	6
-07	SP07	Quần	tây	nữ	M	Be	14
-07	SP08	Quần	short	thể	thao	S	Xám 25
-07	SP08	Quần	short	thể	thao	M	Xám 0
+06	SP01	Áo thun Basic	Áo
+06	SP02	Áo sơ mi Oxford	Áo
+06	SP03	Áo polo Classic	Áo
+06	SP04	Áo kiểu Linen	Áo
+06	SP05	Áo khoác Denim	Áo
+06	SP06	Quần jeans Slim	Quần
+06	SP07	Quần tây nữ	Quần
+06	SP08	Quần short thể thao	Đồ thể thao
+06	SP09	Váy midi	Váy
+06	SP10	Đầm dự tiệc	Váy
+06	SP11	Áo thể thao	Đồ thể thao
+06	SP12	Thắt lưng da	Phụ kiện
+07	SP01	Áo thun Basic	S	Trắng	5
+07	SP01	Áo thun Basic	M	Đen	8
+07	SP02	Áo sơ mi Oxford	M	Trắng	10
+07	SP02	Áo sơ mi Oxford	L	Xanh	15
+07	SP03	Áo polo Classic	S	Đen	0
+07	SP03	Áo polo Classic	M	Đen	22
+07	SP03	Áo polo Classic	L	Trắng	7
+07	SP04	Áo kiểu Linen	S	Be	4
+07	SP04	Áo kiểu Linen	M	Be		12
+07	SP05	Áo khoác Denim	L	Xanh				3
+07	SP05	Áo khoác Denim	XL	Đen	0
+07	SP06	Quần jeans Slim	M	Xanh	18
+07	SP06	Quần jeans Slim	L	Đen	9
+07	SP07	Quần tây nữ	S	Đen	6
+07	SP07	Quần tây nữ	M	Be	14
+07	SP08	Quần short thể thao	S	Xám	25
+07	SP08	Quần short thể thao	M	Xám	0
 07	SP09	Váy midi	S	Đỏ	2
 07	SP09	Váy midi	M	Đỏ	11
 07	SP10	Đầm dự tiệc	M	Đen	8
@@ -76,11 +76,11 @@
 07	SP11	Áo thể thao	S	Xanh	16
 07	SP11	Áo thể thao	M	Xanh	4
 07	SP12	Thắt lưng da	M	Nâu	30
-08	SP01	Áo thun Basic Mây	250000
+08	SP01	Áo thun Basic	Mây	250000
 08	SP02	Áo sơ mi Oxford	Urban	300000
-08	SP03	Áo polo Classic Urban	450000
-08	SP04	Áo kiểu Linen   Luna	700000
-08	SP05	Áo khoác Denim  North	950000
+08	SP03	Áo polo Classic	Urban	450000
+08	SP04	Áo kiểu Linen			Luna	700000
+08	SP05	Áo khoác Denim		North	950000
 09	SP01	Áo thun Basic	2
 09	SP02	Áo sơ mi Oxford	2
 09	SP03	Áo polo Classic	3
@@ -93,8 +93,11 @@
 09	SP10	Đầm dự tiệc	2
 09	SP11	Áo thể thao	2
 09	SP12	Thắt lưng da	1
-10	SP02	Áo sơ mi Oxford 25
-10	SP03	Áo polo Classic 29
-10	SP06	Quần jeans Slim 27
-10	SP08	Quần short thể thao 25
-10	SP12	Thắt lưng da    30
+10	SP02	Áo sơ mi Oxford	25
+10	SP03	Áo polo Classic	29
+10	SP06	Quần jeans Slim	27
+10	SP08	Quần short thể thao	25
+10	SP12	Thắt lưng da				30
+
+
+

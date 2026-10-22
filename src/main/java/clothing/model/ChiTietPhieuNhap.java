@@ -22,4 +22,11 @@ public final class ChiTietPhieuNhap {
     public int getSoLuong() { return soLuong; }
     public BigDecimal getGiaNhap() { return giaNhap; }
     public BigDecimal getThanhTien() { return thanhTien; }
+    @Override
+    public String toString() {
+        return "Mã phiếu nhập: " + maPhieuNhap
+                + "\nMã biến thể sản phẩm: " + maBienThe
+                + "\nSố lượng nhập: " + soLuong
+                + "\nGiá nhập: " + giaNhap;
+    }
 }

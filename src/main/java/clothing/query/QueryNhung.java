@@ -121,6 +121,7 @@ public class QueryNhung extends BaseQuery{
                         hd.getMaHoaDon(),
                         hd.getNgayLap(),
                         hd.getMaKhachHang(),
+                        hd.getMaNhanVien(),
                         hd.getMaKhuyenMai(),
                         hd.getPhuongThucThanhToan(),
                         getTongHD(hd, db.getChiTietHoaDons(), db.getKhuyenMais())
@@ -255,7 +256,7 @@ public class QueryNhung extends BaseQuery{
         List<Row> ketQua = new ArrayList<>();
 
         db.getHoaDons().stream()
-                .map(HoaDon::getMaKhachHang)
+                .map(HoaDon::getMaKhachHang).distinct()
                 .forEach(maKH -> {
                     if (db.getHoaDons().stream()
                             .filter(hd -> hd.getMaKhachHang().equals(maKH))

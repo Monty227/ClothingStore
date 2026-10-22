@@ -1,7 +1,6 @@
 package clothing.model;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 public class SanPham {
     private final String maSanPham;
@@ -32,5 +31,13 @@ public class SanPham {
 
     public String getMaDanhMuc() { return maDanhMuc; }
 
-
+    @Override
+    public String toString() {
+        return "Mã sản phẩm: " + maSanPham
+                + "\nTên sản phẩm: " + tenSanPham
+                + "\nThương hiệu: " + thuongHieu
+                + "\nGiới tính: " + gioiTinh
+                + "\nGiá bán: " + giaBan
+                + "\nMã danh mục: " + maDanhMuc;
+    }
 }

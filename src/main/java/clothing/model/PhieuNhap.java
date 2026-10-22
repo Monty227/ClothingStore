@@ -1,4 +1,5 @@
 package clothing.model;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -22,4 +23,12 @@ public final class PhieuNhap {
     public String getMaNhaCungCap() { return maNhaCungCap; }
     public String  getMaNhanVien() { return maNhanVien; }
     public BigDecimal getTongTien() { return tongTien; }
+    @Override
+    public String toString() {
+        return "Mã phiếu nhập: " + maPhieuNhap
+                + "\nNgày nhập: " + ngayNhap
+                + "\nMã nhà cung cấp: " + maNhaCungCap
+                + "\nMã nhân viên: " + maNhanVien
+                + "\nTổng tiền: " + tongTien;
+    }
 }

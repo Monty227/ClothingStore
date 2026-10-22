@@ -1,7 +1,5 @@
 package clothing.model;
 
-import java.util.List;
-
 public class BienTheSanPham {
 
     private final String maBienThe;
@@ -32,4 +30,13 @@ public class BienTheSanPham {
 
     public String getMaVach() { return maVach; }
 
+    @Override
+    public String toString() {
+        return "Mã biến thể: " + maBienThe
+                + "\nMã sản phẩm: " + maSanPham
+                + "\nKích cỡ: " + kichCo
+                + "\nMàu sắc: " + mauSac
+                + "\nSố lượng tồn: " + soLuongTon
+                + "\nMã vạch: " + maVach;
+    }
 }

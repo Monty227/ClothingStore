@@ -25,4 +25,13 @@ public final class NhanVien {
     public chucVu getChucVu() { return chucVu; }
     public BigDecimal getLuongCoBan() { return luongCoBan; }
     public LocalDate getNgayVaoLam() { return ngayVaoLam; }
+    @Override
+    public String toString() {
+        return "Mã nhân viên: " + maNhanVien
+                + "\nHọ tên: " + hoTen
+                + "\nSố điện thoại: " + soDienThoai
+                + "\nChức vụ: " + chucVu
+                + "\nLương cơ bản: " + luongCoBan
+                + "\nNgày vào làm: " + ngayVaoLam;
+    }
 }

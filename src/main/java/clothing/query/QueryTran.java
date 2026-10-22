@@ -25,10 +25,12 @@ public class QueryTran extends BaseQuery {
             "Tìm các biến thể sản phẩm đã từng được nhập nhưng hiện tại có số lượng tồn bằng 0.",
             "Tìm nhà cung cấp có tổng giá trị nhập hàng lớn hơn giá trị nhập hàng trung bình của tất cả nhà cung cấp."
     ));
+
     @Override
     public List<String> getTitles() {
         return TITLES;
     }
+
     public static final List<String> HEADERS = Collections.unmodifiableList(Arrays.asList(
             "Mã NV|Họ Tên|Số Điện Thoại|Chức Vụ|Lương Cơ Bản",
             "Mã NV|Họ Tên|Số Điện Thoại|Chức Vụ|Lương Cơ Bản",
@@ -41,14 +43,12 @@ public class QueryTran extends BaseQuery {
             "Mã Biến Thể|Mã Sản Phẩm|Kích Cỡ|Màu Sắc|Số Lượng Tồn|Mã Vạch",
             "Mã NCC|Tên Nhà Cung Cấp|Tổng Giá Trị Nhập"
     ));
+
     @Override
     public List<String> getHeaders() {
         return HEADERS;
     }
-    @Override
-    protected List<Object> getQueries() {
-        return Collections.emptyList();
-    }
+
     @Override
     public List<Row> execute(int number, Scanner sc) {
         switch (number) {
@@ -57,7 +57,7 @@ public class QueryTran extends BaseQuery {
             case 2:
                 System.out.println("Nhập chức vụ cần tìm (QUAN_LY, BAN_HANG, THU_KHO): ");
                 String cvStr = sc.nextLine();
-                return cau02(chucVu.valueOf(cvStr));
+                return cau02(chucVu.valueOf(cvStr.trim()));
             case 3:
                 return cau03();
             case 4:
@@ -65,7 +65,7 @@ public class QueryTran extends BaseQuery {
             case 5:
                 System.out.println("Nhập mã phiếu nhập cần xem (VD: PN01): ");
                 String maPN = sc.nextLine();
-                return cau05(maPN);
+                return cau05(maPN.trim());
             case 6:
                 return cau06();
             case 7:
@@ -80,12 +80,14 @@ public class QueryTran extends BaseQuery {
                 throw new IllegalArgumentException("Số câu không hợp lệ");
         }
     }
+
     public List<Row> cau01() {
         return db.getNhanViens().stream()
                 .sorted(Comparator.comparing(NhanVien::getMaNhanVien))
                 .map(nv -> Row.of(nv.getMaNhanVien(), nv.getHoTen(), nv.getSoDienThoai(), nv.getChucVu(), nv.getLuongCoBan()))
                 .collect(Collectors.toList());
     }
+
     public List<Row> cau02(chucVu cv) {
         return db.getNhanViens().stream()
                 .filter(nv -> nv.getChucVu() == cv)
@@ -93,12 +95,14 @@ public class QueryTran extends BaseQuery {
                 .map(nv -> Row.of(nv.getMaNhanVien(), nv.getHoTen(), nv.getSoDienThoai(), nv.getChucVu(), nv.getLuongCoBan()))
                 .collect(Collectors.toList());
     }
+
     public List<Row> cau03() {
         return db.getNhaCungCaps().stream()
                 .sorted(Comparator.comparing(NhaCungCap::getMaNhaCungCap))
                 .map(ncc -> Row.of(ncc.getMaNhaCungCap(), ncc.getTenNhaCungCap(), ncc.getSoDienThoai(), ncc.getDiaChi()))
                 .collect(Collectors.toList());
     }
+
     public List<Row> cau04() {
         return db.getPhieuNhaps().stream()
                 .sorted(Comparator.comparing(PhieuNhap::getMaPhieuNhap))
@@ -112,6 +116,7 @@ public class QueryTran extends BaseQuery {
                 })
                 .collect(Collectors.toList());
     }
+
     public List<Row> cau05(String maPN) {
         return db.getChiTietPhieuNhaps().stream()
                 .filter(ct -> ct.getMaPhieuNhap().equals(maPN))
@@ -128,6 +133,7 @@ public class QueryTran extends BaseQuery {
                 })
                 .collect(Collectors.toList());
     }
+
     public List<Row> cau06() {
         return db.getPhieuNhaps().stream()
                 .sorted(Comparator.comparing(PhieuNhap::getMaPhieuNhap))
@@ -140,6 +146,7 @@ public class QueryTran extends BaseQuery {
                 })
                 .collect(Collectors.toList());
     }
+
     public List<Row> cau07() {
         return db.getNhaCungCaps().stream()
                 .sorted(Comparator.comparing(NhaCungCap::getMaNhaCungCap))
@@ -155,6 +162,7 @@ public class QueryTran extends BaseQuery {
                 })
                 .collect(Collectors.toList());
     }
+
     public List<Row> cau08() {
         return db.getNhanViens().stream()
                 .sorted(Comparator.comparing(NhanVien::getMaNhanVien))
@@ -170,20 +178,24 @@ public class QueryTran extends BaseQuery {
                 })
                 .collect(Collectors.toList());
     }
+
     public List<Row> cau09() {
         Set<String> maBienTheDaNhap = db.getChiTietPhieuNhaps().stream()
                 .map(ChiTietPhieuNhap::getMaBienThe)
                 .collect(Collectors.toSet());
+
         return db.getBienTheSanPhams().stream()
                 .filter(bt -> maBienTheDaNhap.contains(bt.getMaBienThe()) && bt.getSoLuongTon() == 0)
                 .sorted(Comparator.comparing(BienTheSanPham::getMaBienThe))
-                .map(bt -> Row.of(bt.getMaBienThe(), bt.getMaSanPham(), bt.getKichCo(), bt.getMauSac(), bt.getSoLuongTon(), bt.getMaVach() ))
+                .map(bt -> Row.of(bt.getMaBienThe(), bt.getMaSanPham(), bt.getKichCo(), bt.getMauSac(), bt.getSoLuongTon(), bt.getMaVach()))
                 .collect(Collectors.toList());
     }
+
     public List<Row> cau10() {
         Map<String, BigDecimal> tongTienTheoNCC = new HashMap<>();
         BigDecimal tongTatCa = BigDecimal.ZERO;
         List<NhaCungCap> nccs = db.getNhaCungCaps();
+
         for (NhaCungCap ncc : nccs) {
             BigDecimal total = db.getPhieuNhaps().stream()
                     .filter(pn -> pn.getMaNhaCungCap().equals(ncc.getMaNhaCungCap()))
@@ -192,8 +204,10 @@ public class QueryTran extends BaseQuery {
             tongTienTheoNCC.put(ncc.getMaNhaCungCap(), total);
             tongTatCa = tongTatCa.add(total);
         }
+
         BigDecimal trungBinh = nccs.isEmpty() ? BigDecimal.ZERO
                 : tongTatCa.divide(new BigDecimal(nccs.size()), 2, RoundingMode.HALF_UP);
+
         return nccs.stream()
                 .filter(ncc -> tongTienTheoNCC.get(ncc.getMaNhaCungCap()).compareTo(trungBinh) > 0)
                 .sorted(Comparator.comparing(NhaCungCap::getMaNhaCungCap))
@@ -201,4 +215,3 @@ public class QueryTran extends BaseQuery {
                 .collect(Collectors.toList());
     }
 }
-

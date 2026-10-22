@@ -125,7 +125,7 @@ public final class DataStore {
 
         khuyenMais = Collections.unmodifiableList(Arrays.asList(
                 new KhuyenMai("KM01", "Giảm 10 phần trăm", LoaiGiam.PHAN_TRAM, new BigDecimal("10"), LocalDate.of(2026, 10, 1), LocalDate.of(2026, 10, 31), new BigDecimal("100000")),
-                new KhuyenMai("KM02", "Giảm trực tiếp 30000", LoaiGiam.SO_TIEN, new BigDecimal("30000"), LocalDate.of(2026, 9, 1), LocalDate.of(2026, 12, 31), new BigDecimal("150000")),
+                new KhuyenMai("KM02", "Giảm trực tiếp 30.000", LoaiGiam.SO_TIEN, new BigDecimal("30000"), LocalDate.of(2026, 9, 1), LocalDate.of(2026, 12, 31), new BigDecimal("150000")),
                 new KhuyenMai("KM03", "Ưu đãi mùa hè", LoaiGiam.PHAN_TRAM, new BigDecimal("20"), LocalDate.of(2026, 6, 1), LocalDate.of(2026, 8, 31), new BigDecimal("500000")),
                 new KhuyenMai("KM04", "Ưu đãi sắp diễn ra", LoaiGiam.SO_TIEN, new BigDecimal("50000"), LocalDate.of(2026, 11, 1), LocalDate.of(2026, 11, 30), new BigDecimal("200000")),
                 new KhuyenMai("KM05", "Giảm 5 phần trăm", LoaiGiam.PHAN_TRAM, new BigDecimal("5"), LocalDate.of(2026, 10, 10), LocalDate.of(2026, 10,20), new BigDecimal("0"))

@@ -5,12 +5,11 @@ import clothing.model.DanhMuc;
 import clothing.model.BienTheSanPham;
 import clothing.util.Row;
 import clothing.data.DataStore;
-
+import java.util.Scanner;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class QueryThu extends BaseQuery{
@@ -52,8 +51,7 @@ public class QueryThu extends BaseQuery{
         return HEADERS;
     }
 
-    @Override
-    public List<Row>  execute(int number, Scanner sc) {
+    public List<Row> execute(int number, Scanner sc) {
         switch (number) {
             case 1:
                 return cau01();

@@ -1,20 +1,18 @@
-/*package clothing;
+package clothing;
 
 import clothing.data.DataStore;
 import clothing.query.QueryThu;
 import clothing.util.Row;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.List;
 
 public class TestQueryThu {
-
     public static void main(String[] args) throws IOException {
         DataStore db = new DataStore();
         QueryThu query = new QueryThu(db);
 
-        List<String> expected = TestService.docFile("expectedThu.tsv");
+        List<String> expected = TestService.docFile("expectedThu");
 
         int soPass = 0;
         int tongO = 0;
@@ -57,13 +55,13 @@ public class TestQueryThu {
             case 4:
                 return query.cau04();
             case 5:
-                return query.cau05("HD01");
+                return query.cau05();
             case 6:
-                return query.cau06(LocalDate.of(2026, 10, 15));
+                return query.cau06();
             case 7:
                 return query.cau07();
             case 8:
-                return query.cau08();
+                return query.cau08("Áo");
             case 9:
                 return query.cau09();
             case 10:
@@ -73,4 +71,4 @@ public class TestQueryThu {
         }
     }
 }
- */
+

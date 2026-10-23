@@ -21,9 +21,9 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         DataStore db = new DataStore();
 
-        // QueryThu queryThu = new QueryThu(db);
+        QueryThu queryThu = new QueryThu(db);
         QueryNhung queryNhung = new QueryNhung(db);
-        // QueryTran queryTran = new QueryTran(db);
+        QueryTran queryTran = new QueryTran(db);
 
         boolean tiepTuc = true;
         while (tiepTuc) {
@@ -39,13 +39,13 @@ public class Main {
 
             switch (luaChon) {
                 case 1:
-                    // chayMenuTruyVan(queryThu);
+                    chayMenuTruyVan(queryThu, sc);
                     break;
                 case 2:
                     chayMenuTruyVan(queryNhung, sc);
                     break;
                 case 3:
-                    // chayMenuTruyVan(queryTran);
+                    chayMenuTruyVan(queryTran, sc);
                     break;
                 case 4:
                     chayMenuDAO(db, sc);

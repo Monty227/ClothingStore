@@ -5,6 +5,7 @@ import clothing.model.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -24,7 +25,7 @@ public final class DataStore {
     private final List<ChiTietPhieuNhap> chiTietPhieuNhaps;
 
     public DataStore() {
-        sanPhams = Collections.unmodifiableList(Arrays.asList(
+        sanPhams = new ArrayList<>(Arrays.asList(
                 new SanPham("SP01", "Áo thun Basic", "Mây", GioiTinh.UNISEX, new BigDecimal("250000"), "DM01"),
                 new SanPham("SP02", "Áo sơ mi Oxford", "Urban", GioiTinh.NAM, new BigDecimal("300000"), "DM01"),
                 new SanPham("SP03", "Áo polo Classic", "Urban", GioiTinh.NAM, new BigDecimal("450000"), "DM01"),
@@ -39,7 +40,7 @@ public final class DataStore {
                 new SanPham("SP12", "Thắt lưng da", "Craft", GioiTinh.UNISEX, new BigDecimal("180000"), "DM05")
         ));
 
-        danhMucs = Collections.unmodifiableList(Arrays.asList(
+        danhMucs = new ArrayList<>(Arrays.asList(
                 new DanhMuc("DM01", "Áo", "Áo thun, áo sơ mi và áo khoác"),
                 new DanhMuc("DM02", "Quần", "Quần dài và quần short"),
                 new DanhMuc("DM03", "Váy", "Váy và đầm"),
@@ -47,7 +48,7 @@ public final class DataStore {
                 new DanhMuc("DM05", "Phụ kiện", "Phụ kiện thời trang")
         ));
 
-        bienTheSanPhams = Collections.unmodifiableList(Arrays.asList(
+        bienTheSanPhams = new ArrayList<>(Arrays.asList(
                 new BienTheSanPham("BT01", "SP01", KichCo.S, "Trắng", 5, "893000000001"),
                 new BienTheSanPham("BT02", "SP01", KichCo.M, "Đen", 8, "893000000002"),
                 new BienTheSanPham("BT03", "SP02", KichCo.M, "Trắng", 10, "893000000003"),
@@ -74,7 +75,7 @@ public final class DataStore {
                 new BienTheSanPham("BT24", "SP12", KichCo.M, "Nâu", 30, "893000000024")
         ));
 
-        khachHangs = Collections.unmodifiableList(Arrays.asList(
+        khachHangs = new ArrayList<>(Arrays.asList(
                 new KhachHang("KH01", "Nguyễn Minh Lan", "0901000001", "minhlan@example.com", LocalDate.of(2002, 3, 14), 1250, HangThanhVien.KIMCUONG),
                 new KhachHang("KH02", "Trần Quốc Bảo", "0901000002", "quocbao@example.com", LocalDate.of(2001, 7, 22), 820, HangThanhVien.VANG),
                 new KhachHang("KH03", "Lê Thu Hà", "0901000003", "thuha@example.com", LocalDate.of(2003, 1, 9), 450, HangThanhVien.BAC),
@@ -87,7 +88,7 @@ public final class DataStore {
                 new KhachHang("KH10", "Hoàng Nhật Vy", "0901000010", "nhatvy@example.com", LocalDate.of(1998, 6, 6), 300, HangThanhVien.BAC)
         ));
 
-        hoaDons = Collections.unmodifiableList(Arrays.asList(
+        hoaDons = new ArrayList<>(Arrays.asList(
                 new HoaDon("HD01", LocalDateTime.of(2026, 10, 2,10, 15, 0), "KH01", "NV02", "KM01", PhuongThucThanhToan.CHUYEN_KHOAN, TrangThaiDonHang.DA_THANH_TOAN),
                 new HoaDon("HD02", LocalDateTime.of(2026, 10, 3, 11, 20, 0), "KH02", "NV03", "KM02", PhuongThucThanhToan.TIEN_MAT, TrangThaiDonHang.DA_THANH_TOAN),
                 new HoaDon("HD03", LocalDateTime.of(2026, 10, 4, 14, 5, 0), "KH03", "NV02", null, PhuongThucThanhToan.THE, TrangThaiDonHang.DA_THANH_TOAN),
@@ -102,7 +103,7 @@ public final class DataStore {
                 new HoaDon("HD12", LocalDateTime.of(2026, 10, 12, 19, 0, 0), "KH10", "NV02", null, PhuongThucThanhToan.THE, TrangThaiDonHang.DA_THANH_TOAN)
         ));
 
-        chiTietHoaDons = Collections.unmodifiableList(Arrays.asList(
+        chiTietHoaDons = new ArrayList<>(Arrays.asList(
                 new ChiTietHoaDon("HD01", "BT03", 2, new BigDecimal("300000")),
                 new ChiTietHoaDon("HD01", "BT06", 1, new BigDecimal("450000")),
                 new ChiTietHoaDon("HD02", "BT12", 1, new BigDecimal("650000")),
@@ -123,15 +124,15 @@ public final class DataStore {
                 new ChiTietHoaDon("HD12", "BT23", 1, new BigDecimal("390000"))
         ));
 
-        khuyenMais = Collections.unmodifiableList(Arrays.asList(
+        khuyenMais = new ArrayList<>(Arrays.asList(
                 new KhuyenMai("KM01", "Giảm 10 phần trăm", LoaiGiam.PHAN_TRAM, new BigDecimal("10"), LocalDate.of(2026, 10, 1), LocalDate.of(2026, 10, 31), new BigDecimal("100000")),
-                new KhuyenMai("KM02", "Giảm trực tiếp 30000", LoaiGiam.SO_TIEN, new BigDecimal("30000"), LocalDate.of(2026, 9, 1), LocalDate.of(2026, 12, 31), new BigDecimal("150000")),
+                new KhuyenMai("KM02", "Giảm trực tiếp 30.000", LoaiGiam.SO_TIEN, new BigDecimal("30000"), LocalDate.of(2026, 9, 1), LocalDate.of(2026, 12, 31), new BigDecimal("150000")),
                 new KhuyenMai("KM03", "Ưu đãi mùa hè", LoaiGiam.PHAN_TRAM, new BigDecimal("20"), LocalDate.of(2026, 6, 1), LocalDate.of(2026, 8, 31), new BigDecimal("500000")),
                 new KhuyenMai("KM04", "Ưu đãi sắp diễn ra", LoaiGiam.SO_TIEN, new BigDecimal("50000"), LocalDate.of(2026, 11, 1), LocalDate.of(2026, 11, 30), new BigDecimal("200000")),
                 new KhuyenMai("KM05", "Giảm 5 phần trăm", LoaiGiam.PHAN_TRAM, new BigDecimal("5"), LocalDate.of(2026, 10, 10), LocalDate.of(2026, 10,20), new BigDecimal("0"))
         ));
 
-        nhanViens = Collections.unmodifiableList(Arrays.asList(
+        nhanViens = new ArrayList<>(Arrays.asList(
                 new NhanVien("NV01", "Nguyễn Thành Đạt", "0912000001", chucVu.QUAN_LY, new BigDecimal("15000000"), LocalDate.of(2021, 4, 12)),
                 new NhanVien("NV02", "Trần Mỹ Duyên", "0912000002", chucVu.BAN_HANG, new BigDecimal("8500000"), LocalDate.of(2022, 6, 1)),
                 new NhanVien("NV03", "Lê Anh Tuấn", "0912000003", chucVu.BAN_HANG, new BigDecimal("9000000"), LocalDate.of(2023, 2, 15)),
@@ -140,7 +141,7 @@ public final class DataStore {
                 new NhanVien("NV06", "Đặng Thảo My", "0912000006", chucVu.BAN_HANG, new BigDecimal("8700000"), LocalDate.of(2026, 1, 2))
         ));
 
-        nhaCungCaps = Collections.unmodifiableList(Arrays.asList(
+        nhaCungCaps = new ArrayList<>(Arrays.asList(
                 new NhaCungCap("NCC01", "May Việt", "0283000001", "TP. Hồ Chí Minh"),
                 new NhaCungCap("NCC02", "Vải Thành Công", "0283000002", "Bình Dương"),
                 new NhaCungCap("NCC03", "Thời trang An Phú", "0283000003", "Đồng Nai"),
@@ -148,7 +149,7 @@ public final class DataStore {
                 new NhaCungCap("NCC05", "Xưởng may Hoa Sen", "0283000005", "Long An")
         ));
 
-        phieuNhaps = Collections.unmodifiableList(Arrays.asList(
+        phieuNhaps = new ArrayList<>(Arrays.asList(
                 new PhieuNhap("PN01", LocalDate.of(2026, 8, 1), "NCC01", "NV04", new BigDecimal("1600000")),
                 new PhieuNhap("PN02", LocalDate.of(2026, 8,5), "NCC02", "NV05", new BigDecimal("2100000")),
                 new PhieuNhap("PN03", LocalDate.of(2026, 8, 12), "NCC03", "NV04", new BigDecimal("1750000")),
@@ -159,7 +160,7 @@ public final class DataStore {
                 new PhieuNhap("PN08", LocalDate.of(2026,9, 25), "NCC03", "NV05", new BigDecimal("1200000"))
         ));
 
-        chiTietPhieuNhaps = Collections.unmodifiableList(Arrays.asList(
+        chiTietPhieuNhaps = new ArrayList<>(Arrays.asList(
                 new ChiTietPhieuNhap("PN01", "BT01", 10, new BigDecimal("80000")),
                 new ChiTietPhieuNhap("PN01", "BT02", 10, new BigDecimal("80000")),
                 new ChiTietPhieuNhap("PN02", "BT03", 10, new BigDecimal("120000")),

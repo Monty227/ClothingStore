@@ -35,4 +35,15 @@ public final class KhachHang {
     public int getDiemTichLuy() { return diemTichLuy; }
 
     public HangThanhVien getHangThanhVien() { return hangThanhVien; }
+
+    @Override
+    public String toString() {
+        return "Mã khách hàng: " + maKhachHang
+                + "\nHọ tên: " + hoTen
+                + "\nSố điện thoại: " + soDienThoai
+                + "\nEmail: " + email
+                + "\nNgày sinh: " + ngaySinh
+                + "\nĐiểm tích lũy: " + diemTichLuy
+                + "\nHạng thành viên: " + hangThanhVien;
+    }
 }

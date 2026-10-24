@@ -16,4 +16,11 @@ public final class NhaCungCap {
     public String getTenNhaCungCap() { return tenNhaCungCap; }
     public String getSoDienThoai() { return soDienThoai; }
     public String getDiaChi() { return diaChi; }
+    @Override
+    public String toString() {
+        return "Mã nhà cung cấp: " + maNhaCungCap
+                + "\nTên nhà cung cấp: " + tenNhaCungCap
+                + "\nSố điện thoại: " + soDienThoai
+                + "\nĐịa chỉ: " + diaChi;
+    }
 }

@@ -26,5 +26,13 @@ public final class ChiTietHoaDon {
     public BigDecimal getDonGia() { return donGia; }
 
     public BigDecimal getThanhTien() { return thanhTien; }
+
+    @Override
+    public String toString() {
+        return "Mã hóa đơn: " + maHoaDon
+                + "\nMã biến thể sản phẩm: " + maBienThe
+                + "\nSố lượng: " + soLuong
+                + "\nĐơn giá: " + donGia;
+    }
 }
 

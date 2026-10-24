@@ -36,5 +36,16 @@ public final class KhuyenMai {
     public LocalDate getNgayKetThuc() { return ngayKetThuc; }
 
     public BigDecimal getDonToiThieu() { return donToiThieu; }
+
+    @Override
+    public String toString() {
+        return "Mã khuyến mãi: " + maKhuyenMai
+                + "\nTên khuyến mãi: " + tenKhuyenMai
+                + "\nLoại giảm: " + loaiGiam
+                + "\nGiá trị giảm: " + giaTriGiam
+                + "\nNgày bắt đầu: " + ngayBatDau
+                + "\nNgày kết thúc: " + ngayKetThuc
+                + "\nĐơn hàng tối thiểu: " + donToiThieu;
+    }
 }
 

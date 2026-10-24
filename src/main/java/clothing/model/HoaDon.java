@@ -35,4 +35,16 @@ public final class HoaDon {
     public PhuongThucThanhToan getPhuongThucThanhToan() { return phuongThucThanhToan; }
 
     public TrangThaiDonHang getTrangThai() { return trangThai; }
+
+    @Override
+    public String toString() {
+        return "Mã hóa đơn: " + maHoaDon
+                + "\nNgày lập: " + ngayLap
+                + "\nMã khách hàng: " + maKhachHang
+                + "\nMã nhân viên: " + maNhanVien
+                + "\nMã khuyến mãi: "
+                + (maKhuyenMai == null ? "Không áp dụng" : maKhuyenMai)
+                + "\nPhương thức thanh toán: " + phuongThucThanhToan
+                + "\nTrạng thái: " + trangThai;
+    }
 }

@@ -560,7 +560,7 @@ Các thành viên trong nhóm trao đổi và xây dựng các câu truy vấn d
 | 6 | Liệt kê các chương trình khuyến mãi đang có hiệu lực ở một thời điểm cụ thể. |
 | 7 | Tính tổng doanh thu từ các hóa đơn đã thanh toán. |
 | 8 | Thống kê số lượng hóa đơn và tổng doanh thu theo từng khách hàng. |
-| 9 | Tìm các khách hàng chưa từng có hóa đơn đã thanh toán. |
+| 9 | Tìm các khách hàng đã từng lập hóa đơn, nhưng chưa có hóa đơn nào đã thanh toán. |
 | 10 | Liệt kê các khách hàng chưa sử dụng khuyến mãi trong các đơn hàng của mình. |
 
 ---

@@ -1,7 +1,5 @@
 package clothing.model;
 
-import java.util.List;
-
 public class DanhMuc {
     private final String maDanhMuc;
     private final String tenDanhMuc;
@@ -16,5 +14,11 @@ public class DanhMuc {
     public String getTenDanhMuc() {return tenDanhMuc;}
     public String getMoTa() {return moTa;}
 
+    @Override
+    public String toString() {
+        return "Mã danh mục: " + maDanhMuc
+                + "\nTên danh mục: " + tenDanhMuc
+                + "\nMô tả: " + moTa;
+    }
 }
 
